@@ -1,7 +1,18 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.MasterPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.oldtrigger.test.MockHit;
+import icecube.daq.oldtrigger.test.MockOutputChannel;
+import icecube.daq.oldtrigger.test.MockOutputProcess;
+import icecube.daq.oldtrigger.test.MockReadoutRequest;
+import icecube.daq.oldtrigger.test.MockSourceID;
+import icecube.daq.oldtrigger.test.MockSplicer;
+import icecube.daq.oldtrigger.test.MockTrigger;
+import icecube.daq.oldtrigger.test.MockTrigger;
+import icecube.daq.oldtrigger.test.MockTriggerRequest;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.SourceIdRegistry;
@@ -9,17 +20,6 @@ import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerException;
 import icecube.daq.splicer.StrandTail;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.test.MockAppender;
-import icecube.daq.trigger.test.MockHit;
-import icecube.daq.trigger.test.MockOutputChannel;
-import icecube.daq.trigger.test.MockOutputProcess;
-import icecube.daq.trigger.test.MockReadoutRequest;
-import icecube.daq.trigger.test.MockSourceID;
-import icecube.daq.trigger.test.MockSplicer;
-import icecube.daq.trigger.test.MockTrigger;
-import icecube.daq.trigger.test.MockTrigger;
-import icecube.daq.trigger.test.MockTriggerRequest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

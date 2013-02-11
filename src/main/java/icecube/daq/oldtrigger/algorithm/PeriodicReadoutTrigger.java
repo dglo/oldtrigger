@@ -1,11 +1,11 @@
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.IPayload;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.exceptions.IllegalParameterValueException;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IUTCTime;
 
 //import java.util.ArrayList;

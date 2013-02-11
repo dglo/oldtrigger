@@ -8,7 +8,7 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.common.DAQCmdInterface;
 import icecube.daq.oldpayload.impl.PayloadFactory;
@@ -34,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
  *  and put in the payloadList.
  * This is called in GlobalTrigBag.java.
  *
- * @version $Id: GlobalTrigEventWrapper.java 14087 2012-12-06 20:02:03Z mnewcomb $
+ * @version $Id: GlobalTrigEventWrapper.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class GlobalTrigEventWrapper

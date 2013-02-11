@@ -1,8 +1,8 @@
-package icecube.daq.trigger.config;
+package icecube.daq.oldtrigger.config;
 
+import icecube.daq.oldtrigger.exceptions.ConfigException;
 import icecube.daq.util.DOMRegistry;
 import icecube.daq.util.DeployedDOM;
-import icecube.daq.trigger.exceptions.ConfigException;
 
 import java.io.File;
 import java.io.FileInputStream;

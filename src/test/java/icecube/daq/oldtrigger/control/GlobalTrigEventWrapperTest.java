@@ -1,10 +1,10 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
+import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.oldtrigger.test.MockReadoutRequest;
+import icecube.daq.oldtrigger.test.MockReadoutRequestElement;
+import icecube.daq.oldtrigger.test.MockTriggerRequest;
 import icecube.daq.payload.SourceIdRegistry;
-import icecube.daq.trigger.test.MockAppender;
-import icecube.daq.trigger.test.MockReadoutRequest;
-import icecube.daq.trigger.test.MockReadoutRequestElement;
-import icecube.daq.trigger.test.MockTriggerRequest;
 
 import java.util.ArrayList;
 

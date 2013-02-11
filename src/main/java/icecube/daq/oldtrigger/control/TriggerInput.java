@@ -1,14 +1,14 @@
 /*
  * class: TriggerInput
  *
- * Version $Id: TriggerInput.java 12778 2011-03-14 22:43:46Z dglo $
+ * Version $Id: TriggerInput.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: May 2 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.payload.ICompositePayload;
@@ -33,7 +33,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides a simple implementation of ITriggerInput
  *
- * @version $Id: TriggerInput.java 12778 2011-03-14 22:43:46Z dglo $
+ * @version $Id: TriggerInput.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class TriggerInput

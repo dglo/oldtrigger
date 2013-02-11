@@ -1,4 +1,4 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQOutputChannelManager;
 import icecube.daq.oldpayload.impl.MasterPayloadFactory;

@@ -8,13 +8,13 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.ITriggerRequestPayload;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
  *  makes a new TriggerRequestPayload for each input TriggerRequestPayload
  *  and then pass them to GlobalTrigBag.java.
  *
- * @version $Id: ThroughputTrigger.java 4574 2009-08-28 21:32:32Z dglo $
+ * @version $Id: ThroughputTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class ThroughputTrigger

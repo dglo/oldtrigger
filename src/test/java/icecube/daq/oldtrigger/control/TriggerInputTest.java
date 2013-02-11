@@ -1,8 +1,8 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
-import icecube.daq.trigger.test.MockAppender;
-import icecube.daq.trigger.test.MockHit;
-import icecube.daq.trigger.test.MockTriggerRequest;
+import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.oldtrigger.test.MockHit;
+import icecube.daq.oldtrigger.test.MockTriggerRequest;
 
 import java.io.IOException;
 import java.util.zip.DataFormatException;

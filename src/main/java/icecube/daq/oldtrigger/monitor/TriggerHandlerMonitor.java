@@ -1,21 +1,21 @@
 /*
  * class: TriggerHandlerMonitor
  *
- * Version $Id: TriggerHandlerMonitor.java 2125 2007-10-12 18:27:05Z ksb $
+ * Version $Id: TriggerHandlerMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: December 29 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.monitor;
+package icecube.daq.oldtrigger.monitor;
 
 import icecube.daq.payload.IUTCTime;
 
 /**
  * This class is a mess.
  *
- * @version $Id: TriggerHandlerMonitor.java 2125 2007-10-12 18:27:05Z ksb $
+ * @version $Id: TriggerHandlerMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class TriggerHandlerMonitor

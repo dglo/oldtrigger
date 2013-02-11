@@ -1,4 +1,4 @@
-package icecube.daq.trigger.component;
+package icecube.daq.oldtrigger.component;
 
 import icecube.daq.common.DAQCmdInterface;
 import icecube.daq.io.DAQComponentOutputProcess;
@@ -12,6 +12,14 @@ import icecube.daq.juggler.mbean.SystemStatistics;
 import icecube.daq.oldpayload.impl.MasterPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestRecord;
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.config.TriggerBuilder;
+import icecube.daq.oldtrigger.control.DummyTriggerManager;
+import icecube.daq.oldtrigger.control.GlobalTriggerManager;
+import icecube.daq.oldtrigger.control.ITriggerManager;
+import icecube.daq.oldtrigger.control.TriggerManager;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.SourceIdRegistry;
@@ -19,14 +27,6 @@ import icecube.daq.payload.impl.VitreousBufferCache;
 import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.SpliceableFactory;
 import icecube.daq.splicer.Splicer;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.config.TriggerBuilder;
-import icecube.daq.trigger.control.DummyTriggerManager;
-import icecube.daq.trigger.control.GlobalTriggerManager;
-import icecube.daq.trigger.control.ITriggerManager;
-import icecube.daq.trigger.control.TriggerManager;
-import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.File;
@@ -371,6 +371,6 @@ public class TriggerComponent
      */
     public String getVersionInfo()
     {
-	return "$Id: TriggerComponent.java 13803 2012-07-17 17:41:53Z dglo $";
+	return "$Id: TriggerComponent.java 14204 2013-02-11 19:52:57Z dglo $";
     }
 }

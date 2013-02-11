@@ -1,19 +1,19 @@
 /*
  * class: TriggerParameter
  *
- * Version $Id: TriggerParameter.java 12765 2011-03-07 18:42:04Z dglo $
+ * Version $Id: TriggerParameter.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: November 23 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.config;
+package icecube.daq.oldtrigger.config;
 
 /**
  * This class encapsulates a name/value pair that is a trigger parameter.
  *
- * @version $Id: TriggerParameter.java 12765 2011-03-07 18:42:04Z dglo $
+ * @version $Id: TriggerParameter.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class TriggerParameter

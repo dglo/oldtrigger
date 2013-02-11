@@ -1,14 +1,14 @@
 /*
  * class: PayloadBagMonitor
  *
- * Version $Id: PayloadBagMonitor.java 2629 2008-02-11 05:48:36Z dglo $
+ * Version $Id: PayloadBagMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: December 29 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.monitor;
+package icecube.daq.oldtrigger.monitor;
 
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IUTCTime;
@@ -17,7 +17,7 @@ import icecube.daq.payload.IUTCTime;
  * This class combines two PayloadFlowMonitors to be used by any class that consumes and
  * produces payloads.
  *
- * @version $Id: PayloadBagMonitor.java 2629 2008-02-11 05:48:36Z dglo $
+ * @version $Id: PayloadBagMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class PayloadBagMonitor

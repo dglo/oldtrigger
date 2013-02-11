@@ -1,26 +1,26 @@
 /*
  * class: SimpleMajorityTrigger
  *
- * Version $Id: SimpleMajorityTrigger.java 14091 2012-12-06 23:34:45Z mnewcomb $
+ * Version $Id: SimpleMajorityTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: August 19 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.control.DummyPayload;
+import icecube.daq.oldtrigger.exceptions.ConfigException;
+import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
+import icecube.daq.oldtrigger.exceptions.TimeOutOfOrderException;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IUTCTime;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.control.DummyPayload;
-import icecube.daq.trigger.exceptions.ConfigException;
-import icecube.daq.trigger.exceptions.IllegalParameterValueException;
-import icecube.daq.trigger.exceptions.TimeOutOfOrderException;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,7 +32,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class implements a simple multiplicty trigger.
  *
- * @version $Id: SimpleMajorityTrigger.java 14091 2012-12-06 23:34:45Z mnewcomb $
+ * @version $Id: SimpleMajorityTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public final class SimpleMajorityTrigger extends AbstractTrigger
@@ -95,7 +95,7 @@ public final class SimpleMajorityTrigger extends AbstractTrigger
      *
      * @param parameter TriggerParameter object.
      *
-     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
      *
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException {
@@ -139,7 +139,7 @@ public final class SimpleMajorityTrigger extends AbstractTrigger
      *
      * @param payload payload to process
      *
-     * @throws icecube.daq.trigger.exceptions.TriggerException
+     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
      *          if the algorithm doesn't like this payload
      */
     public void runTrigger(IPayload payload)

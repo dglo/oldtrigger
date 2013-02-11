@@ -1,20 +1,20 @@
 /*
  * class: CoincidenceTriggerTwo
  *
- * Version $Id: TwoCoincidenceTrigger.java 4574 2009-08-28 21:32:32Z dglo $
+ * Version $Id: TwoCoincidenceTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: September 2 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.control.ConditionalTriggerBag;
+import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.ITriggerRequestPayload;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.control.ConditionalTriggerBag;
-import icecube.daq.trigger.exceptions.IllegalParameterValueException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  * Two coincidence trigger algorithm which uses timeGate (using CoincidenceTriggerBag)
  * for safe release of a selected trigger.
  *
- * @version $Id: TwoCoincidenceTrigger.java 4574 2009-08-28 21:32:32Z dglo $
+ * @version $Id: TwoCoincidenceTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class TwoCoincidenceTrigger
@@ -155,7 +155,7 @@ public class TwoCoincidenceTrigger
      * This method performs configuration.
      *
      * @param parameter TriggerParameter object
-     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException
     {

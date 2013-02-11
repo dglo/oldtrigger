@@ -8,9 +8,10 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.PayloadFactory;
+import icecube.daq.oldtrigger.monitor.PayloadBagMonitor;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.ITriggerRequestPayload;
@@ -18,7 +19,6 @@ import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
 import icecube.daq.payload.impl.UTCTime;
-import icecube.daq.trigger.monitor.PayloadBagMonitor;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package icecube.daq.trigger.config;
+package icecube.daq.oldtrigger.config;
 
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.exceptions.ConfigException;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.impl.SourceID;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.exceptions.ConfigException;
-import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -96,7 +96,7 @@ public class TriggerBuilder
             ITrigger trig;
             try {
                 Class trigClass =
-                    Class.forName("icecube.daq.trigger.algorithm." + name);
+                    Class.forName("icecube.daq.oldtrigger.algorithm." + name);
                 trig = (ITrigger) trigClass.newInstance();
             } catch (Exception ex) {
                 throw new ConfigException("Cannot load trigger \"" + name +

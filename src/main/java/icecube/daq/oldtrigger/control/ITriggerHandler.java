@@ -1,20 +1,20 @@
 /*
  * interface: ITriggerManager
  *
- * Version $Id: ITriggerHandler.java 13874 2012-08-28 19:14:11Z dglo $
+ * Version $Id: ITriggerHandler.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: March 31 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.payload.IByteBufferCache;
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.ISourceID;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.util.DOMRegistry;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * This interface defines the behavior of a TriggerHandler
  *
- * @version $Id: ITriggerHandler.java 13874 2012-08-28 19:14:11Z dglo $
+ * @version $Id: ITriggerHandler.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public interface ITriggerHandler extends IPayloadProducer

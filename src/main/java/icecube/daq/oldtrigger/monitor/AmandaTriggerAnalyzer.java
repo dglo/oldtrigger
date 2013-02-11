@@ -1,4 +1,4 @@
-package icecube.daq.trigger.monitor;
+package icecube.daq.oldtrigger.monitor;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayload;
 import icecube.daq.payload.IUTCTime;

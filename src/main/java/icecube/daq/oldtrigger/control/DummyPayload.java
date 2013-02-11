@@ -1,14 +1,14 @@
 /*
  * class: DummyPayload
  *
- * Version $Id: DummyPayload.java 13128 2011-06-28 23:38:14Z dglo $
+ * Version $Id: DummyPayload.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: October 7 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.ILoadablePayload;
@@ -24,7 +24,7 @@ import java.util.zip.DataFormatException;
  * This class is a dummy payload that only has a UTC time associated with it.
  * Its main purpose is for truncating the Splicer.
  *
- * @version $Id: DummyPayload.java 13128 2011-06-28 23:38:14Z dglo $
+ * @version $Id: DummyPayload.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class DummyPayload

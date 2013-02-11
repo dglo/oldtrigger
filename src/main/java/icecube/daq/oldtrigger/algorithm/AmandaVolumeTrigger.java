@@ -1,4 +1,4 @@
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

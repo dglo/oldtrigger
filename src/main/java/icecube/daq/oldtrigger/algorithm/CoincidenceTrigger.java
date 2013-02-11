@@ -1,24 +1,24 @@
 /*
  * class: CoincidenceTrigger
  *
- * Version $Id: CoincidenceTrigger.java 12762 2011-03-07 17:55:21Z dglo $
+ * Version $Id: CoincidenceTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: September 2 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
+import icecube.daq.oldtrigger.control.DummyPayload;
+import icecube.daq.oldtrigger.control.Sorter;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IReadoutRequest;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.IUTCTime;
-import icecube.daq.trigger.control.DummyPayload;
-import icecube.daq.trigger.control.Sorter;
-import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class is to provide methods common to all coincidence triggers.
  *
- * @version $Id: CoincidenceTrigger.java 12762 2011-03-07 17:55:21Z dglo $
+ * @version $Id: CoincidenceTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public abstract class CoincidenceTrigger
@@ -55,7 +55,7 @@ public abstract class CoincidenceTrigger
      * This is the main method.
      *
      * @param payload
-     * @throws icecube.daq.trigger.exceptions.TriggerException
+     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
      */
     public void runTrigger(IPayload payload) throws TriggerException {
 

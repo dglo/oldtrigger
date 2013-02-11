@@ -1,15 +1,15 @@
-package icecube.daq.trigger.test;
+package icecube.daq.oldtrigger.test;
 
 import icecube.daq.oldpayload.RecordTypeRegistry;
+import icecube.daq.oldtrigger.algorithm.AbstractTrigger;
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.config.TriggerReadout;
+import icecube.daq.oldtrigger.control.ITriggerHandler;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.PayloadRegistry;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.splicer.SplicerException;
 import icecube.daq.splicer.StrandTail;
-import icecube.daq.trigger.algorithm.AbstractTrigger;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.config.TriggerReadout;
-import icecube.daq.trigger.control.ITriggerHandler;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -69,7 +69,7 @@ public abstract class TriggerCollection
     static AbstractTrigger createTrigger(int type, int cfgId, int srcId,
                                          String name)
     {
-        String className = "icecube.daq.trigger.algorithm." + name;
+        String className = "icecube.daq.oldtrigger.algorithm." + name;
 
         Class trigClass;
         try {

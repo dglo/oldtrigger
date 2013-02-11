@@ -1,21 +1,21 @@
 /*
  * interface: ITriggerMonitor
  *
- * Version $Id: ITriggerMonitor.java 14069 2012-11-28 16:50:58Z dglo $
+ * Version $Id: ITriggerMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: August 22 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.monitor;
+package icecube.daq.oldtrigger.monitor;
 
 import java.util.Map;
 
 /**
  * This interface defines the control aspect of a trigger.
  *
- * @version $Id: ITriggerMonitor.java 14069 2012-11-28 16:50:58Z dglo $
+ * @version $Id: ITriggerMonitor.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public interface ITriggerMonitor

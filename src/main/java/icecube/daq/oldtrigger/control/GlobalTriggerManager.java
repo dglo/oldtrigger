@@ -8,9 +8,10 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.monitor.Statistic;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.ISourceID;
@@ -19,7 +20,6 @@ import icecube.daq.payload.impl.UTCTime;
 import icecube.daq.splicer.Spliceable;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerChangedEvent;
-import icecube.daq.trigger.monitor.Statistic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class...
  *
- * @version $Id: GlobalTriggerManager.java 13874 2012-08-28 19:14:11Z dglo $
+ * @version $Id: GlobalTriggerManager.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class GlobalTriggerManager

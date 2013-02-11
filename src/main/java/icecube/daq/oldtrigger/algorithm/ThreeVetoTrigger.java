@@ -1,19 +1,19 @@
 /*
  * class: ThreeVetoTrigger
  *
- * Version $Id: ThreeVetoTrigger.java 4574 2009-08-28 21:32:32Z dglo $
+ * Version $Id: ThreeVetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: January 25 2006
  *
  * (c) 2006 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.ITriggerRequestPayload;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.exceptions.IllegalParameterValueException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class is accept all incoming triggers but to veto three configured triggers.
  *
- * @version $Id: ThreeVetoTrigger.java 4574 2009-08-28 21:32:32Z dglo $
+ * @version $Id: ThreeVetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class ThreeVetoTrigger
@@ -148,7 +148,7 @@ public class ThreeVetoTrigger
      * This method is to obtain trigger configuration information.
      *
      * @param parameter TriggerParameter object
-     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException
     {

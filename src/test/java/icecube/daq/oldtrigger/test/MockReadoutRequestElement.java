@@ -1,4 +1,4 @@
-package icecube.daq.trigger.test;
+package icecube.daq.oldtrigger.test;
 
 import icecube.daq.payload.IDOMID;
 import icecube.daq.payload.IPayloadDestination;

@@ -1,19 +1,19 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
+import icecube.daq.oldtrigger.algorithm.CoincidenceTrigger;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.oldtrigger.test.MockHit;
+import icecube.daq.oldtrigger.test.MockPayload;
+import icecube.daq.oldtrigger.test.MockReadoutRequest;
+import icecube.daq.oldtrigger.test.MockReadoutRequestElement;
+import icecube.daq.oldtrigger.test.MockSourceID;
+import icecube.daq.oldtrigger.test.MockTriggerRequest;
+import icecube.daq.oldtrigger.test.MockUTCTime;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.IPayloadDestination;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.SourceIdRegistry;
-import icecube.daq.trigger.algorithm.CoincidenceTrigger;
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.test.MockAppender;
-import icecube.daq.trigger.test.MockHit;
-import icecube.daq.trigger.test.MockPayload;
-import icecube.daq.trigger.test.MockReadoutRequest;
-import icecube.daq.trigger.test.MockReadoutRequestElement;
-import icecube.daq.trigger.test.MockSourceID;
-import icecube.daq.trigger.test.MockTriggerRequest;
-import icecube.daq.trigger.test.MockUTCTime;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;

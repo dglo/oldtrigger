@@ -1,15 +1,15 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
+import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.oldtrigger.test.MockHit;
+import icecube.daq.oldtrigger.test.MockPayload;
+import icecube.daq.oldtrigger.test.MockSourceID;
+import icecube.daq.oldtrigger.test.MockTriggerRequest;
+import icecube.daq.oldtrigger.test.MockUTCTime;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.IPayloadDestination;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.SourceIdRegistry;
-import icecube.daq.trigger.test.MockAppender;
-import icecube.daq.trigger.test.MockHit;
-import icecube.daq.trigger.test.MockPayload;
-import icecube.daq.trigger.test.MockSourceID;
-import icecube.daq.trigger.test.MockTriggerRequest;
-import icecube.daq.trigger.test.MockUTCTime;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

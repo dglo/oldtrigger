@@ -1,20 +1,25 @@
 /*
  * class: TriggerHandler
  *
- * Version $Id: TriggerHandler.java 14118 2012-12-13 22:19:04Z mnewcomb $
+ * Version $Id: TriggerHandler.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: October 25 2004
  *
  * (c) 2004 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldpayload.impl.Payload;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.monitor.PayloadBagMonitor;
+import icecube.daq.oldtrigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.ILoadablePayload;
@@ -26,11 +31,6 @@ import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
 import icecube.daq.payload.impl.UTCTime;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.monitor.PayloadBagMonitor;
-import icecube.daq.trigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;
@@ -48,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger.
  *
- * @version $Id: TriggerHandler.java 14118 2012-12-13 22:19:04Z mnewcomb $
+ * @version $Id: TriggerHandler.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class TriggerHandler
@@ -934,8 +934,8 @@ public class TriggerHandler
 //System.err.println("OT!!noOut!!");
                         log.error("Trigger destination has not been set");
 			throw new Error("Trigger destination not set");
-                    } 
-		    
+                    }
+
 		    outChan = payloadOutput.getChannel();
 		    if (outChan == null) {
 			//System.err.println("OT!!noChan!!");

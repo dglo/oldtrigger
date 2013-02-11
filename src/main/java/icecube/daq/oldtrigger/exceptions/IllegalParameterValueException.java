@@ -1,20 +1,20 @@
 /*
  * class: TimeOutOfOrderException
  *
- * Version $Id: IllegalParameterValueException.java 13698 2012-05-14 17:42:35Z dglo $
+ * Version $Id: IllegalParameterValueException.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: March 31 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.exceptions;
+package icecube.daq.oldtrigger.exceptions;
 
 
 /**
  * This class provides a specific exception
  *
- * @version $Id: IllegalParameterValueException.java 13698 2012-05-14 17:42:35Z dglo $
+ * @version $Id: IllegalParameterValueException.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class IllegalParameterValueException

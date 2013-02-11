@@ -8,11 +8,14 @@
  * (c) 2004 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.ILoadablePayload;
@@ -25,9 +28,6 @@ import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;
@@ -320,7 +320,7 @@ public class DummyTriggerHandler
 
             // if we haven't already, get the output channel
             if (outChan == null) {
-		// Removed check on payloadOutput as it's checked 
+		// Removed check on payloadOutput as it's checked
 		// before entering this loop
 		outChan = payloadOutput.getChannel();
 	    }

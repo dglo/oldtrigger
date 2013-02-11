@@ -1,4 +1,4 @@
-package icecube.daq.trigger.monitor;
+package icecube.daq.oldtrigger.monitor;
 
 import icecube.daq.oldpayload.impl.Payload;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;

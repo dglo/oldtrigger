@@ -8,7 +8,7 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.PayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
@@ -27,7 +27,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * TODO: Massively clean up this code!!!
  *
- * @version $Id: SmartMerger.java 14112 2012-12-13 17:59:32Z mnewcomb $
+ * @version $Id: SmartMerger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class SmartMerger

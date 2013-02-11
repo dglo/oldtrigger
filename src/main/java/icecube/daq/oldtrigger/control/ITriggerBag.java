@@ -1,25 +1,25 @@
 /*
  * class: ITriggerBag
  *
- * Version $Id: ITriggerBag.java 13401 2011-11-11 04:23:13Z dglo $
+ * Version $Id: ITriggerBag.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: March 16 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.PayloadFactory;
+import icecube.daq.oldtrigger.monitor.PayloadBagMonitor;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.IUTCTime;
-import icecube.daq.trigger.monitor.PayloadBagMonitor;
 
 /**
  *
  * Interface for trigger bag
  *
- * @version $Id: ITriggerBag.java 13401 2011-11-11 04:23:13Z dglo $
+ * @version $Id: ITriggerBag.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public interface ITriggerBag

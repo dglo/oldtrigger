@@ -7,9 +7,9 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>trigger</artifactId>
+  <artifactId>oldtrigger</artifactId>
   <packaging>jar</packaging>
-  <name>trigger</name>
+  <name>oldtrigger</name>
   <description>The ${project.name} sub-system of the Surface Data Acquisition system for the IceCube Project.</description>
 
   <scm>
@@ -34,7 +34,7 @@
               <classifier>gtrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.GlobalTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.GlobalTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -50,7 +50,7 @@
               <classifier>iitrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.IniceTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.IniceTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -66,7 +66,7 @@
               <classifier>ittrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.IcetopTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.IcetopTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -83,7 +83,7 @@
               <classifier>ebshell</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.EBShell</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.EBShell</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -101,7 +101,7 @@ Remove this comment to enable EBShell -->
               <classifier>shell</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.TriggerShell</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.TriggerShell</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -119,7 +119,7 @@ Remove this comment to enable TriggerShell -->
               <classifier>simptrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.trigger.component.SimpleTrigger</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.SimpleTrigger</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>

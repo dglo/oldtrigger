@@ -1,4 +1,4 @@
-package icecube.daq.trigger.component;
+package icecube.daq.oldtrigger.component;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;

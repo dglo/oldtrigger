@@ -8,7 +8,7 @@
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldpayload.impl.PayloadFactory;
@@ -23,7 +23,7 @@ import java.util.List;
  * Required is Input of an unorganized ReadoutRequestelements (List).
  * Both timeOverlap and spaceOverlap will be handled here via SimpleMerger.java and SmartMerger.java.
  *
- * @version $Id: GlobalTrigEventReadoutElements.java 12765 2011-03-07 18:42:04Z dglo $
+ * @version $Id: GlobalTrigEventReadoutElements.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class GlobalTrigEventReadoutElements

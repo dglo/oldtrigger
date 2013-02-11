@@ -1,4 +1,4 @@
-package icecube.daq.trigger.test;
+package icecube.daq.oldtrigger.test;
 
 import icecube.daq.io.DAQComponentObserver;
 import icecube.daq.io.DAQComponentOutputProcess;

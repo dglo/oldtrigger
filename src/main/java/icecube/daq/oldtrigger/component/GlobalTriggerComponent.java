@@ -1,15 +1,15 @@
-package icecube.daq.trigger.component;
+package icecube.daq.oldtrigger.component;
 
 import icecube.daq.common.DAQCmdInterface;
 import icecube.daq.juggler.component.DAQCompException;
 import icecube.daq.juggler.component.DAQCompServer;
+import icecube.daq.oldtrigger.algorithm.ITrigger;
+import icecube.daq.oldtrigger.config.TriggerBuilder;
+import icecube.daq.oldtrigger.config.TriggerReadout;
+import icecube.daq.oldtrigger.control.GlobalTriggerManager;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.SourceIdRegistry;
-import icecube.daq.trigger.algorithm.ITrigger;
-import icecube.daq.trigger.config.TriggerBuilder;
-import icecube.daq.trigger.config.TriggerReadout;
-import icecube.daq.trigger.control.GlobalTriggerManager;
-import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.util.ArrayList;
 import java.util.Iterator;

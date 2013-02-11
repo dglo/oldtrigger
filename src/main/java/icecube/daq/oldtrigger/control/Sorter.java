@@ -1,14 +1,14 @@
 /*
  * class: Sorter
  *
- * Version $Id: Sorter.java 4574 2009-08-28 21:32:32Z dglo $
+ * Version $Id: Sorter.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: July 15 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
 import icecube.daq.payload.IReadoutRequestElement;
 import icecube.daq.payload.ITriggerRequestPayload;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * This class is to provide the earliest/latest UTC-timeStamp.
  *
- * @version $Id: Sorter.java 4574 2009-08-28 21:32:32Z dglo $
+ * @version $Id: Sorter.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public class Sorter

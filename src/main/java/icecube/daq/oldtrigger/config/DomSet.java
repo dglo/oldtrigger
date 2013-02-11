@@ -1,4 +1,4 @@
-package icecube.daq.trigger.config;
+package icecube.daq.oldtrigger.config;
 
 import icecube.daq.payload.IDOMID;
 
@@ -42,7 +42,7 @@ public class DomSet
         this.set.addAll(set);
     }
 
-    
+
     /**
      * Compute a hashcode for this object
      */
@@ -50,14 +50,14 @@ public class DomSet
 	final int prime = 31;
 
 	int result = 1;
-	
+
 	result = (int)(prime * result + name.hashCode());
 	result = (int)(prime * result + set.hashCode());
 
 	return result;
     }
 
-    
+
 
     /**
      * Compare this DomSet with another DomSet.
@@ -71,13 +71,13 @@ public class DomSet
 	if (this==other) {
 	    return true;
 	}
-	
+
 	if ((other==null) || (!(other instanceof DomSet))) {
 	    return false;
 	}
 
 	DomSet other_d = (DomSet)other;
-	
+
         return set.size() == other_d.set.size() &&
             set.containsAll(other_d.set);
     }

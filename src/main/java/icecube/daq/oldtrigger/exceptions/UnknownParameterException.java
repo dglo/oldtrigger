@@ -1,20 +1,20 @@
 /*
  * class: TimeOutOfOrderException
  *
- * Version $Id: UnknownParameterException.java 2629 2008-02-11 05:48:36Z dglo $
+ * Version $Id: UnknownParameterException.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: March 31 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.exceptions;
+package icecube.daq.oldtrigger.exceptions;
 
 
 /**
  * This class provides a specific exception
  *
- * @version $Id: UnknownParameterException.java 2629 2008-02-11 05:48:36Z dglo $
+ * @version $Id: UnknownParameterException.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class UnknownParameterException

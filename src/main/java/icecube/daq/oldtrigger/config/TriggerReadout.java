@@ -1,14 +1,14 @@
 /*
  * class: TriggerReadout
  *
- * Version $Id: TriggerReadout.java 12879 2011-04-14 16:47:37Z dglo $
+ * Version $Id: TriggerReadout.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: November 23 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.config;
+package icecube.daq.oldtrigger.config;
 
 import icecube.daq.payload.IReadoutRequestElement;
 
@@ -18,7 +18,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class represents a trigger readout.
  *
- * @version $Id: TriggerReadout.java 12879 2011-04-14 16:47:37Z dglo $
+ * @version $Id: TriggerReadout.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public class TriggerReadout

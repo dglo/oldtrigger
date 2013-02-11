@@ -1,17 +1,27 @@
 /*
  * class: AbstractTrigger
  *
- * Version $Id: AbstractTrigger.java 14069 2012-11-28 16:50:58Z dglo $
+ * Version $Id: AbstractTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: August 19 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayload;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.config.TriggerParameter;
+import icecube.daq.oldtrigger.config.TriggerReadout;
+import icecube.daq.oldtrigger.control.DummyPayload;
+import icecube.daq.oldtrigger.control.HitFilter;
+import icecube.daq.oldtrigger.control.ITriggerHandler;
+import icecube.daq.oldtrigger.exceptions.ConfigException;
+import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
+import icecube.daq.oldtrigger.exceptions.TriggerException;
+import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
+import icecube.daq.oldtrigger.monitor.TriggerMonitor;
 import icecube.daq.payload.IDOMID;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.ILoadablePayload;
@@ -21,16 +31,6 @@ import icecube.daq.payload.IReadoutRequestElement;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.SourceIdRegistry;
-import icecube.daq.trigger.config.TriggerParameter;
-import icecube.daq.trigger.config.TriggerReadout;
-import icecube.daq.trigger.control.DummyPayload;
-import icecube.daq.trigger.control.HitFilter;
-import icecube.daq.trigger.control.ITriggerHandler;
-import icecube.daq.trigger.exceptions.ConfigException;
-import icecube.daq.trigger.exceptions.IllegalParameterValueException;
-import icecube.daq.trigger.exceptions.TriggerException;
-import icecube.daq.trigger.exceptions.UnknownParameterException;
-import icecube.daq.trigger.monitor.TriggerMonitor;
 import icecube.icebucket.monitor.ScalarFlowMonitor;
 import icecube.icebucket.monitor.simple.ScalarFlowMonitorImpl;
 
@@ -48,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
  * ITriggerConfig, ITriggerControl, and ITriggerMonitor interfaces. All specific trigger
  * classes derive from this class.
  *
- * @version $Id: AbstractTrigger.java 14069 2012-11-28 16:50:58Z dglo $
+ * @version $Id: AbstractTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author pat
  */
 public abstract class AbstractTrigger
@@ -227,7 +227,7 @@ public abstract class AbstractTrigger
      *
      * @param parameter TriggerParameter object.
      *
-     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
      *
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException {
@@ -282,7 +282,7 @@ public abstract class AbstractTrigger
     /**
      * Run the trigger algorithm on a payload.
      * @param payload payload to process
-     * @throws icecube.daq.trigger.exceptions.TriggerException if the algorithm doesn't like this payload
+     * @throws icecube.daq.oldtrigger.exceptions.TriggerException if the algorithm doesn't like this payload
      */
     public abstract void runTrigger(IPayload payload) throws TriggerException;
 

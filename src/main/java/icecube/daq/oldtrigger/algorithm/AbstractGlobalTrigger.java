@@ -1,26 +1,26 @@
 /*
  * class: AbstractGlobalTrigger
  *
- * Version $Id: AbstractGlobalTrigger.java 13874 2012-08-28 19:14:11Z dglo $
+ * Version $Id: AbstractGlobalTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  *
  * Date: August 30 2005
  *
  * (c) 2005 IceCube Collaboration
  */
 
-package icecube.daq.trigger.algorithm;
+package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
+import icecube.daq.oldtrigger.control.ConditionalTriggerBag;
+import icecube.daq.oldtrigger.control.DummyPayload;
+import icecube.daq.oldtrigger.control.GlobalTrigEventWrapper;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.ITriggerRequestPayload;
-import icecube.daq.trigger.control.ConditionalTriggerBag;
-import icecube.daq.trigger.control.DummyPayload;
-import icecube.daq.trigger.control.GlobalTrigEventWrapper;
 
 /**
  * This class is to provide a common method for all triggers in GT.
  *
- * @version $Id: AbstractGlobalTrigger.java 13874 2012-08-28 19:14:11Z dglo $
+ * @version $Id: AbstractGlobalTrigger.java 14204 2013-02-11 19:52:57Z dglo $
  * @author shseo
  */
 public abstract class AbstractGlobalTrigger extends AbstractTrigger

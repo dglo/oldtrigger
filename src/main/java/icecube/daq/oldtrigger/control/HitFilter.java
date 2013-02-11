@@ -1,9 +1,9 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
+import icecube.daq.oldtrigger.config.DomSet;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.exceptions.ConfigException;
 import icecube.daq.payload.IHitPayload;
-import icecube.daq.trigger.config.DomSet;
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.exceptions.ConfigException;
 import icecube.daq.util.DOMRegistry;
 
 /**

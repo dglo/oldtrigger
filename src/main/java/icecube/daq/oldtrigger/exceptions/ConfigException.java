@@ -8,7 +8,7 @@
  * (c) 2004 IceCube Collaboration
  */
 
-package icecube.daq.trigger.exceptions;
+package icecube.daq.oldtrigger.exceptions;
 
 /**
  * This class defines a trigger configuration exception

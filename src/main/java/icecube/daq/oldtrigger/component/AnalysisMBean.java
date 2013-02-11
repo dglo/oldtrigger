@@ -1,4 +1,4 @@
-package icecube.daq.trigger.component;
+package icecube.daq.oldtrigger.component;
 
 import java.util.HashMap;
 

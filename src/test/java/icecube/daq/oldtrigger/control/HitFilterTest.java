@@ -1,8 +1,8 @@
-package icecube.daq.trigger.control;
+package icecube.daq.oldtrigger.control;
 
-import icecube.daq.trigger.config.DomSetFactory;
-import icecube.daq.trigger.exceptions.ConfigException;
-import icecube.daq.trigger.test.MockHit;
+import icecube.daq.oldtrigger.config.DomSetFactory;
+import icecube.daq.oldtrigger.exceptions.ConfigException;
+import icecube.daq.oldtrigger.test.MockHit;
 import icecube.daq.util.DOMRegistry;
 
 import junit.framework.Test;
