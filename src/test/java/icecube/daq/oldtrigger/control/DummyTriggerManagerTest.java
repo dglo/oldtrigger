@@ -76,7 +76,7 @@ public class DummyTriggerManagerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         StrandTail[] tails = new StrandTail[numTails];
         for (int i = 0; i < tails.length; i++) {
@@ -164,7 +164,7 @@ public class DummyTriggerManagerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         StrandTail[] tails = new StrandTail[numTails];
         for (int i = 0; i < tails.length; i++) {

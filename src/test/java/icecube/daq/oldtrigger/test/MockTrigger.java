@@ -17,6 +17,7 @@ import icecube.daq.payload.IReadoutRequestElement;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.SourceIdRegistry;
+import icecube.daq.trigger.common.ITriggerManager;
 import icecube.daq.trigger.exceptions.IllegalParameterValueException;
 import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.trigger.exceptions.UnknownParameterException;
@@ -150,9 +151,14 @@ public class MockTrigger
         throw new Error("Unimplemented");
     }
 
-    public ISourceID getSourceId()
+    public ISourceID getSourceObject()
     {
         return srcId;
+    }
+
+    public int getSourceId()
+    {
+        return srcId.getSourceID();
     }
 
     public int getTriggerConfigId()
@@ -242,6 +248,12 @@ public class MockTrigger
         this.srcId = srcId;
     }
 
+    public void setSourceId(int srcId)
+    {
+        this.srcId =
+            new MockSourceID(SourceIdRegistry.INICE_TRIGGER_SOURCE_ID);
+    }
+
     public void setTriggerConfigId(int cfgId)
     {
         this.cfgId = cfgId;
@@ -255,6 +267,11 @@ public class MockTrigger
     public void setTriggerHandler(ITriggerHandler handler)
     {
         this.handler = handler;
+    }
+
+    public void setTriggerManager(ITriggerManager handler)
+    {
+        this.handler = (ITriggerHandler) handler;
     }
 
     public void setTriggerName(String name)

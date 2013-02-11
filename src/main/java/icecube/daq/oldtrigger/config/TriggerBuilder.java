@@ -3,6 +3,7 @@ package icecube.daq.oldtrigger.config;
 import icecube.daq.oldtrigger.algorithm.ITrigger;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.impl.SourceID;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
 import icecube.daq.trigger.exceptions.ConfigException;
 import icecube.daq.trigger.exceptions.TriggerException;
 
@@ -32,8 +33,8 @@ public class TriggerBuilder
      *
      * @throws TriggerException if there is a problem
      */
-    public static List<ITrigger> buildTriggers(File triggerConfig,
-                                               ISourceID srcId)
+    public static List<ITriggerAlgorithm> buildTriggers(File triggerConfig,
+                                                        ISourceID srcId)
         throws TriggerException
     {
         // open trigger config file
@@ -77,11 +78,12 @@ public class TriggerBuilder
      *
      * @throws TriggerException if there is a problem
      */
-    public static List<ITrigger> buildTriggers(Document doc,
-                                               ISourceID componentId)
+    public static List<ITriggerAlgorithm> buildTriggers(Document doc,
+                                                        ISourceID componentId)
         throws TriggerException
     {
-        ArrayList<ITrigger> trigList = new ArrayList<ITrigger>();
+        ArrayList<ITriggerAlgorithm> trigList =
+            new ArrayList<ITriggerAlgorithm>();
 
         List<Node> nodeList = doc.selectNodes("activeTriggers/triggerConfig");
         for (Node n : nodeList) {

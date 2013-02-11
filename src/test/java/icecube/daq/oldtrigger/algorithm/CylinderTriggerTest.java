@@ -1,7 +1,5 @@
 package icecube.daq.oldtrigger.algorithm;
 
-import icecube.daq.io.DAQComponentIOProcess;
-import icecube.daq.io.SpliceablePayloadReader;
 import icecube.daq.oldpayload.impl.MasterPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.control.TriggerManager;
@@ -12,6 +10,8 @@ import icecube.daq.oldtrigger.test.MockOutputChannel;
 import icecube.daq.oldtrigger.test.MockOutputProcess;
 import icecube.daq.oldtrigger.test.MockSourceID;
 import icecube.daq.oldtrigger.test.TriggerCollection;
+import icecube.daq.io.DAQComponentIOProcess;
+import icecube.daq.io.SpliceablePayloadReader;
 import icecube.daq.payload.PayloadRegistry;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.VitreousBufferCache;
@@ -139,7 +139,7 @@ public class CylinderTriggerTest
         outProc.setOutputChannel(new MockOutputChannel());
         outProc.setValidator(trigCfg.getInIceValidator());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         HKN1Splicer splicer = new HKN1Splicer(trigMgr);
         trigMgr.setSplicer(splicer);

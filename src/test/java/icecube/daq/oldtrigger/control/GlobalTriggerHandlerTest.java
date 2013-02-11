@@ -120,7 +120,8 @@ public class GlobalTriggerHandlerTest
         assertNotNull("Monitor should not be null", trigMgr.getMonitor());
         assertEquals("Unexpected count difference",
                      0, trigMgr.getMonitor().getTriggerBagCountDifference());
-        assertEquals("Unexpected source ID", srcId, trigMgr.getSourceID());
+        assertEquals("Unexpected source ID",
+                     srcId.getSourceID(), trigMgr.getSourceId());
 
         List trigList = trigMgr.getConfiguredTriggerList();
         assertNotNull("Trigger list should be initialized", trigList);
@@ -227,7 +228,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         trigMgr.issueTriggers();
         assertEquals("Bad number of payloads written",
@@ -241,7 +242,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockHit hit = new MockHit(123456L);
 
@@ -270,7 +271,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         trigMgr.flush();
 
@@ -284,7 +285,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockTrigger trig = new MockTrigger();
         //trig.setEarliestPayloadOfInterest(hit);
@@ -313,7 +314,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         GlobalTriggerTrigger trig = new GlobalTriggerTrigger();
         trig.setEarliestPayloadOfInterest(new MockHit(999L));
@@ -358,7 +359,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         GlobalTriggerTrigger trig = new GlobalTriggerTrigger();
         trig.setEarliestPayloadOfInterest(new MockHit(999L));
@@ -415,7 +416,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         GlobalTriggerTrigger trig = new GlobalTriggerTrigger();
         trig.setEarliestPayloadOfInterest(new MockHit(999L));
@@ -489,7 +490,7 @@ public class GlobalTriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         GlobalTriggerTrigger trig = new GlobalTriggerTrigger();
         trig.setEarliestPayloadOfInterest(new MockHit(999L));
@@ -542,7 +543,7 @@ public class GlobalTriggerHandlerTest
     private static void waitForCount(GlobalTriggerHandler trigMgr, int count)
     {
         for (int i = 0; i < 10; i++) {
-            if (trigMgr.getCount() >= count) {
+            if (trigMgr.getTotalProcessed() >= count) {
                 break;
             }
 

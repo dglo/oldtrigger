@@ -1,7 +1,7 @@
 /*
  * interface: IPayloadProducer
  *
- * Version $Id: IPayloadProducer.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: IPayloadProducer.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: October 19 2005
  *
@@ -15,12 +15,12 @@ import icecube.daq.io.DAQComponentOutputProcess;
 /**
  * This interface provides methods for setting payload destinations.
  *
- * @version $Id: IPayloadProducer.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: IPayloadProducer.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
 public interface IPayloadProducer
 {
 
-    void setPayloadOutput(DAQComponentOutputProcess outProc);
+    void setOutputEngine(DAQComponentOutputProcess outProc);
 
 }

@@ -1,7 +1,7 @@
 /*
  * class: TriggerManager
  *
- * Version $Id: TriggerManager.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: TriggerManager.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: October 25 2004
  *
@@ -10,6 +10,7 @@
 
 package icecube.daq.oldtrigger.control;
 
+import icecube.daq.oldpayload.impl.MasterPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.monitor.Statistic;
 import icecube.daq.payload.ILoadablePayload;
@@ -21,9 +22,12 @@ import icecube.daq.splicer.Spliceable;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerChangedEvent;
 
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,12 +35,12 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger
  *
- * @version $Id: TriggerManager.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: TriggerManager.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
 public class TriggerManager
         extends TriggerHandler
-        implements ITriggerManager, TriggerManagerMBean
+        implements IOldManager, TriggerManagerMBean
 {
 
     /**
@@ -71,6 +75,8 @@ public class TriggerManager
     private LinkedList wallTimeQueue;
     private Statistic processingTime;
 
+    private MasterPayloadFactory copyFactory;
+
     /**
      * Constructor
      * @param sourceId SourceId of this TriggerManager
@@ -103,6 +109,25 @@ public class TriggerManager
         init();
     }
 
+    private ILoadablePayload copyPayload(ILoadablePayload payload)
+    {
+        ByteBuffer buf = payload.getPayloadBacking();
+        if (buf == null) {
+            throw new RuntimeException("Cannot copy " + payload +
+                                       "; no backing buffer");
+        }
+
+        if (copyFactory == null) {
+            copyFactory = new MasterPayloadFactory();
+        }
+
+        try {
+            return copyFactory.createPayload(0, buf);
+        } catch (Exception ex) {
+            throw new RuntimeException("Cannot copy " + payload, ex);
+        }
+    }
+
     /**
      * method which is called by splicer to process primitives
      * assumes that all splicedObjects are IHitPayload's
@@ -123,8 +148,10 @@ public class TriggerManager
         if (lastInputListSize > 0) {
             for (int index = start-decrement; numberOfObjectsInSplicer != index; index++) {
 
-                ILoadablePayload payload =
+                ILoadablePayload origPayload =
                     (ILoadablePayload) splicedObjects.get(index);
+                ILoadablePayload payload = copyPayload(origPayload);
+
                 wallTimeQueue.addLast(new Long(System.currentTimeMillis()));
                 latestTime = payload.getPayloadTimeUTC();
 
@@ -251,8 +278,7 @@ public class TriggerManager
             if (log.isDebugEnabled()) {
                 log.debug("This is the LAST POSSIBLE SPLICEABLE!");
             }
-            flush();
-            stopThread();
+            process(null);
         }
 
         Iterator iter = event.getAllSpliceables().iterator();
@@ -306,5 +332,15 @@ public class TriggerManager
 
     public int getProcessingCount() {
         return wallTimeQueue.size();
+    }
+
+    /**
+     * Forward compatibility with new trigger implementation.
+     *
+     * @return empty map of {name : numRequests}
+     */
+    public Map<String, Long> getTriggerCounts()
+    {
+        return new HashMap<String, Long>();
     }
 }

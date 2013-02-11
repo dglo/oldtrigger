@@ -9,20 +9,21 @@ import icecube.daq.oldtrigger.config.TriggerReadout;
 import icecube.daq.oldtrigger.control.GlobalTriggerManager;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.SourceIdRegistry;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
 import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GlobalTriggerComponent
-    extends TriggerComponent
+public class OldGlobalTriggerComponent
+    extends OldTriggerComponent
 {
 
     private static final String COMPONENT_NAME = DAQCmdInterface.DAQ_GLOBAL_TRIGGER;
     private static final int COMPONENT_ID = 0;
 
-    public GlobalTriggerComponent() {
+    public OldGlobalTriggerComponent() {
         super(COMPONENT_NAME, COMPONENT_ID);
     }
 
@@ -56,7 +57,7 @@ public class GlobalTriggerComponent
     private List getReadouts(ISourceID sourceId)
         throws DAQCompException
     {
-        List<ITrigger> list;
+        List<ITriggerAlgorithm> list;
         try {
             list =
                 TriggerBuilder.buildTriggers(getTriggerConfigFile(), sourceId);
@@ -67,8 +68,8 @@ public class GlobalTriggerComponent
         }
 
         List readouts = new ArrayList();
-        for (ITrigger trigger : list) {
-            readouts.addAll(trigger.getReadoutList());
+        for (ITriggerAlgorithm trigger : list) {
+            readouts.addAll(((ITrigger) trigger).getReadoutList());
         }
         return readouts;
     }
@@ -102,7 +103,7 @@ public class GlobalTriggerComponent
     public static void main(String[] args) throws DAQCompException {
         DAQCompServer srvr;
         try {
-            srvr = new DAQCompServer(new GlobalTriggerComponent(), args);
+            srvr = new DAQCompServer(new OldGlobalTriggerComponent(), args);
         } catch (IllegalArgumentException ex) {
             System.err.println(ex.getMessage());
             System.exit(1);

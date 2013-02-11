@@ -18,8 +18,10 @@ import icecube.daq.splicer.Spliceable;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerChangedEvent;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class DummyTriggerManager
         extends DummyTriggerHandler
-        implements ITriggerManager
+        implements IOldManager
 {
 
     /**
@@ -236,4 +238,13 @@ public class DummyTriggerManager
         return 0;
     }
 
+    /**
+     * Forward compatibility with new trigger implementation.
+     *
+     * @return empty map of {name : numRequests}
+     */
+    public Map<String, Long> getTriggerCounts()
+    {
+        return new HashMap<String, Long>();
+    }
 }

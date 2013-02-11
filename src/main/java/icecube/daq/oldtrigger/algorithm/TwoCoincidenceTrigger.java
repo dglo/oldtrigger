@@ -1,7 +1,7 @@
 /*
  * class: CoincidenceTriggerTwo
  *
- * Version $Id: TwoCoincidenceTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: TwoCoincidenceTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: September 2 2005
  *
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  * Two coincidence trigger algorithm which uses timeGate (using CoincidenceTriggerBag)
  * for safe release of a selected trigger.
  *
- * @version $Id: TwoCoincidenceTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: TwoCoincidenceTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  * @author shseo
  */
 public class TwoCoincidenceTrigger
@@ -73,7 +73,7 @@ public class TwoCoincidenceTrigger
         //mtConditionalTriggerBag = new ConditionalTriggerBag();
         //mtConditionalTriggerBag.setConditionalTriggerAlgorithm(this);
         //--make CoincidenceTriggerBag object w/ this specific trigger type, configID, sourceId.
-        mtConditionalTriggerBag = new ConditionalTriggerBag(getTriggerType(), getTriggerConfigId(), getSourceId());
+        mtConditionalTriggerBag = new ConditionalTriggerBag(getTriggerType(), getTriggerConfigId(), getSourceObject());
         //--set this specipic trigger algorithm in the CoincidenceTriggerBag.
         mtConditionalTriggerBag.setConditionalTriggerAlgorithm(this);
     }

@@ -90,8 +90,9 @@ public class TriggerHandlerTest
         assertNotNull("Monitor should not be null", trigMgr.getMonitor());
         assertEquals("Unexpected count difference",
                      0, trigMgr.getMonitor().getTriggerBagCountDifference());
-        assertEquals("Count should be zero", 0, trigMgr.getCount());
-        assertEquals("Unexpected source ID", srcId, trigMgr.getSourceID());
+        assertEquals("Count should be zero", 0, trigMgr.getTotalProcessed());
+        assertEquals("Unexpected source ID",
+                     srcId.getSourceID(), trigMgr.getSourceId());
 
         List trigList = trigMgr.getTriggerList();
         assertNotNull("Trigger list should be initialized", trigList);
@@ -198,7 +199,7 @@ public class TriggerHandlerTest
         trigMgr = new TriggerHandler();
 
         MockOutputProcess outProc = new MockOutputProcess();
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         trigMgr.issueTriggers();
         assertEquals("Bad number of payloads written",
@@ -212,7 +213,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockHit hit = new MockHit(123456L);
 
@@ -238,7 +239,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         trigMgr.flush();
     }
@@ -250,7 +251,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockHit hit = new MockHit(234567L);
 
@@ -276,7 +277,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockHit hit = new MockHit(345678L);
 
@@ -303,7 +304,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         final int numHitsPerTrigger = 6;
 
@@ -345,7 +346,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockTriggerRequest trigReq =
             new MockTriggerRequest(10000L, 20000L, 1, 11);
@@ -369,7 +370,7 @@ public class TriggerHandlerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         TriggerTrigger trig = new TriggerTrigger();
         trig.setEarliestPayloadOfInterest(new MockHit(234567L));
@@ -378,7 +379,7 @@ public class TriggerHandlerTest
         trigMgr.addToTriggerBag(new MockTriggerRequest(100000L, 111111L, 0, 0));
 
         assertEquals("Bad number of input payloads",
-                     0, trigMgr.getCount());
+                     0, trigMgr.getTotalProcessed());
         assertEquals("Unexpected count difference",
                      1, trigMgr.getMonitor().getTriggerBagCountDifference());
 
@@ -395,7 +396,7 @@ public class TriggerHandlerTest
             waitForCount(trigMgr, i);
 
             assertEquals("Bad number of input payloads (" + (i + 1) + " hits)",
-                         i, trigMgr.getCount());
+                         i, trigMgr.getTotalProcessed());
 
             waitForProcessedPayloads(trigMgr);
             waitForMainThread(trigMgr);
@@ -419,7 +420,7 @@ public class TriggerHandlerTest
     private static void waitForCount(TriggerHandler trigMgr, int count)
     {
         for (int i = 0; i < 10; i++) {
-            if (trigMgr.getCount() >= count) {
+            if (trigMgr.getTotalProcessed() >= count) {
                 break;
             }
 

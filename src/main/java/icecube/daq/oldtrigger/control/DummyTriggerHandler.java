@@ -28,6 +28,7 @@ import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;
@@ -129,7 +130,7 @@ public class DummyTriggerHandler
      * method for adding triggers to the trigger list
      * @param trigger trigger to be added
      */
-    public void addTrigger(ITrigger trigger) {
+    public void addTrigger(ITriggerAlgorithm trigger) {
         log.info("Triggers added to DummyTriggerBag are ignored");
     }
 
@@ -138,7 +139,7 @@ public class DummyTriggerHandler
      *
      * @param triggers
      */
-    public void addTriggers(List<ITrigger> triggers) {
+    public void addTriggers(List<ITriggerAlgorithm> triggers) {
         log.info("Triggers added to DummyTriggerBag are ignored");
     }
 
@@ -155,6 +156,10 @@ public class DummyTriggerHandler
         map.put("DummyTrigger", new Long(count));
 
         return map;
+    }
+
+    public Map<String, Object> getTriggerMonitorMap() {
+        return null;
     }
 
     /**
@@ -185,10 +190,10 @@ public class DummyTriggerHandler
     }
 
     /**
-     * sets payload output
+     * sets output engine
      * @param payloadOutput destination of payloads
      */
-    public void setPayloadOutput(DAQComponentOutputProcess payloadOutput) {
+    public void setOutputEngine(DAQComponentOutputProcess payloadOutput) {
         this.payloadOutput = payloadOutput;
     }
 
@@ -282,8 +287,17 @@ public class DummyTriggerHandler
     /**
      * getter for count
      * @return count
+     * @deprecated use getTotalProcessed()
      */
-    public int getCount() {
+    public long getCount() {
+        return getTotalProcessed();
+    }
+
+    /**
+     * getter for total number of payloads processed
+     * @return count
+     */
+    public long getTotalProcessed() {
         return count;
     }
 
@@ -291,8 +305,20 @@ public class DummyTriggerHandler
      * getter for SourceID
      * @return sourceID
      */
-    public ISourceID getSourceID() {
+    public ISourceID getSourceObject() {
         return sourceId;
+    }
+
+    /**
+     * getter for SourceID
+     * @return sourceID
+     */
+    public int getSourceId() {
+        if (sourceId == null) {
+            throw new Error("Source ID has not been set");
+        }
+
+        return sourceId.getSourceID();
     }
 
     /**
@@ -341,7 +367,7 @@ public class DummyTriggerHandler
         return earliestPayloadOfInterest;
     }
 
-    private void setEarliestPayloadOfInterest(IPayload earliest) {
+    public void setEarliestPayloadOfInterest(IPayload earliest) {
         earliestPayloadOfInterest = earliest;
     }
 
@@ -375,5 +401,9 @@ public class DummyTriggerHandler
     public void switchToNewRun()
     {
         // does nothing
+    }
+
+    public int getNumInputsQueued() {
+        return 0;
     }
 }

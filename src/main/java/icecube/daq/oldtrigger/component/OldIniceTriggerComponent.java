@@ -4,21 +4,21 @@ import icecube.daq.common.DAQCmdInterface;
 import icecube.daq.juggler.component.DAQCompException;
 import icecube.daq.juggler.component.DAQCompServer;
 
-public class IcetopTriggerComponent
-    extends TriggerComponent
+public class OldIniceTriggerComponent
+    extends OldTriggerComponent
 {
 
-    private static final String COMPONENT_NAME = DAQCmdInterface.DAQ_ICETOP_TRIGGER;
+    private static final String COMPONENT_NAME = DAQCmdInterface.DAQ_INICE_TRIGGER;
     private static final int COMPONENT_ID = 0;
 
-    public IcetopTriggerComponent() {
+    public OldIniceTriggerComponent() {
         super(COMPONENT_NAME, COMPONENT_ID);
     }
 
     public static void main(String[] args) throws DAQCompException {
         DAQCompServer srvr;
         try {
-            srvr = new DAQCompServer(new IcetopTriggerComponent(), args);
+            srvr = new DAQCompServer(new OldIniceTriggerComponent(), args);
         } catch (IllegalArgumentException ex) {
             System.err.println(ex.getMessage());
             System.exit(1);

@@ -1,7 +1,7 @@
 /*
  * class: ThreeCoincidenceTrigger
  *
- * Version $Id: ThreeCoincidenceTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: ThreeCoincidenceTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: September 6 2005
  *
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  * Three coincidence trigger algorithm which uses timeGate (using CoincidenceTriggerBag)
  * for safe release of a selected trigger.
  *
- * @version $Id: ThreeCoincidenceTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: ThreeCoincidenceTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  * @author shseo
  */
 public class ThreeCoincidenceTrigger
@@ -80,7 +80,7 @@ public class ThreeCoincidenceTrigger
         super();
 
         //--make CoincidenceTriggerBag object w/ this specific trigger type, configID, sourceId.
-        mtConditionalTriggerBag = new ConditionalTriggerBag(getTriggerType(), getTriggerConfigId(), getSourceId());
+        mtConditionalTriggerBag = new ConditionalTriggerBag(getTriggerType(), getTriggerConfigId(), getSourceObject());
 
         //--set this specific trigger algorithm in the CoincidenceTriggerBag.
         mtConditionalTriggerBag.setConditionalTriggerAlgorithm(this);

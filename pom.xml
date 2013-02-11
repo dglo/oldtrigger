@@ -31,10 +31,10 @@
               <goal>jar</goal>
             </goals>
             <configuration>
-              <classifier>gtrig</classifier>
+              <classifier>oldgtrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.oldtrigger.component.GlobalTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.OldGlobalTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -47,10 +47,10 @@
               <goal>jar</goal>
             </goals>
             <configuration>
-              <classifier>iitrig</classifier>
+              <classifier>oldiitrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.oldtrigger.component.IniceTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.OldIniceTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>
@@ -63,10 +63,10 @@
               <goal>jar</goal>
             </goals>
             <configuration>
-              <classifier>ittrig</classifier>
+              <classifier>oldittrig</classifier>
               <archive>
                 <manifest>
-                  <mainClass>icecube.daq.oldtrigger.component.IcetopTriggerComponent</mainClass>
+                  <mainClass>icecube.daq.oldtrigger.component.OldIcetopTriggerComponent</mainClass>
                   <addClasspath>true</addClasspath>
                   <classpathPrefix>../lib</classpathPrefix>
                 </manifest>

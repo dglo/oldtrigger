@@ -21,9 +21,11 @@ import icecube.daq.splicer.Spliceable;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerChangedEvent;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,12 +33,12 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class...
  *
- * @version $Id: GlobalTriggerManager.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: GlobalTriggerManager.java 14206 2013-02-11 22:15:22Z dglo $
  * @author shseo
  */
 public class GlobalTriggerManager
         extends GlobalTriggerHandler
-        implements ITriggerManager, GlobalTriggerManagerMBean
+        implements IOldManager, GlobalTriggerManagerMBean
 {
     /**
      * Log object for this class
@@ -263,4 +265,13 @@ public class GlobalTriggerManager
         return wallTimeQueue.size();
     }
 
+    /**
+     * Forward compatibility with new trigger implementation.
+     *
+     * @return empty map of {name : numRequests}
+     */
+    public Map<String, Long> getTriggerCounts()
+    {
+        return new HashMap<String, Long>();
+    }
 }

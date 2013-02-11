@@ -1,7 +1,7 @@
 /*
  * interface: ITrigger
  *
- * Version $Id: ITriggerConfig.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: ITriggerConfig.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: January 3 2005
  *
@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * This interface defines the configuration aspect of a trigger.
  *
- * @version $Id: ITriggerConfig.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: ITriggerConfig.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
 public interface ITriggerConfig
@@ -59,7 +59,13 @@ public interface ITriggerConfig
      * Get source id.
      * @return sourceId
      */
-    ISourceID getSourceId();
+    int getSourceId();
+
+    /**
+     * Get source id.
+     * @return sourceId
+     */
+    ISourceID getSourceObject();
 
     /**
      * Set source id.

@@ -1,7 +1,7 @@
 /*
  * class: TriggerHandler
  *
- * Version $Id: TriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: TriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: October 25 2004
  *
@@ -30,6 +30,8 @@ import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
 import icecube.daq.payload.impl.UTCTime;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
+import icecube.daq.trigger.common.ITriggerManager;
 import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
@@ -48,7 +50,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger.
  *
- * @version $Id: TriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: TriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
 public class TriggerHandler
@@ -67,7 +69,7 @@ public class TriggerHandler
     /**
      * List of defined triggers
      */
-    private List<ITrigger> triggerList;
+    private List<ITriggerAlgorithm> triggerList;
 
     /**
      * Bag of triggers to issue
@@ -170,7 +172,7 @@ public class TriggerHandler
         srcOfLastHit = null;
         timeOfLastHit = null;
         inputHandler = new TriggerInput();
-        triggerList = new ArrayList<ITrigger>();
+        triggerList = new ArrayList<ITriggerAlgorithm>();
 
         triggerBag = createTriggerBag();
 
@@ -233,14 +235,14 @@ public class TriggerHandler
      * method for adding triggers to the trigger list
      * @param trigger trigger to be added
      */
-    public void addTrigger(ITrigger trigger) {
+    public void addTrigger(ITriggerAlgorithm trigger) {
 
         // check for duplicates
         boolean good = true;
-        for (ITrigger existing : triggerList) {
+        for (ITriggerAlgorithm existing : triggerList) {
             if ( (trigger.getTriggerType() == existing.getTriggerType()) &&
                  (trigger.getTriggerConfigId() == existing.getTriggerConfigId()) &&
-                 (trigger.getSourceId().getSourceID() == existing.getSourceId().getSourceID()) ) {
+                 (trigger.getSourceId() == existing.getSourceId()) ) {
                 log.error("Attempt to add duplicate trigger to trigger list!");
                 good = false;
             }
@@ -248,10 +250,10 @@ public class TriggerHandler
 
         if (good) {
             log.info("Setting OutputFactory of Trigger");
-            trigger.setTriggerFactory(outputFactory);
+            ((ITrigger) trigger).setTriggerFactory(outputFactory);
             log.info("Adding Trigger to TriggerList");
             triggerList.add(trigger);
-            trigger.setTriggerHandler(this);
+            trigger.setTriggerManager((ITriggerManager) this);
         }
     }
 
@@ -260,7 +262,7 @@ public class TriggerHandler
      *
      * @param triggers
      */
-    public void addTriggers(List<ITrigger> triggers) {
+    public void addTriggers(List<ITriggerAlgorithm> triggers) {
         clearTriggers();
         triggerList.addAll(triggers);
     }
@@ -276,7 +278,7 @@ public class TriggerHandler
     {
         HashMap<String, Long> map = new HashMap<String, Long>();
 
-        for (ITrigger trigger : triggerList) {
+        for (ITriggerAlgorithm trigger : triggerList) {
             map.put(trigger.getTriggerName(),
                     new Long(trigger.getTriggerCounter()));
         }
@@ -288,7 +290,7 @@ public class TriggerHandler
     {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
-        for (ITrigger trigger : triggerList) {
+        for (ITriggerAlgorithm trigger : triggerList) {
             Map<String, Object> moniMap = trigger.getTriggerMonitorMap();
             if (moniMap != null && moniMap.size() > 0) {
                 String trigName = trigger.getTriggerName() + "-" +
@@ -308,25 +310,27 @@ public class TriggerHandler
      * including the input buffer, all triggers, and the output bag
      */
     public void flush() {
-
         // flush the input handler
         if (log.isInfoEnabled()) {
             log.info("Flushing InputHandler: size = " + inputHandler.size());
         }
         inputHandler.flush();
 
-        // then call process with a null payload to suck the life out of the input handler
+        // then call process with a null payload to drain everything from
+        // the input handler
         process(null);
         while (mainThread != null && !mainThread.sawFlush()) {
             Thread.yield();
+//try { Thread.sleep(10); } catch (Exception ex) { }
         }
 
-        // now flush the triggers, this should prompt them to send any known triggers to the bag
+        // now flush the triggers, this should prompt them to send any
+        // known triggers to the bag
         if (log.isInfoEnabled()) {
             log.info("Flushing Triggers");
         }
-        for (ITrigger trigger : triggerList) {
-            trigger.flush();
+        for (ITriggerAlgorithm trigger : triggerList) {
+            ((ITrigger) trigger).flush();
             if (log.isInfoEnabled()) {
                 log.info("Trigger count for " + trigger.getTriggerName() +
                          " is " + trigger.getTriggerCounter());
@@ -351,7 +355,7 @@ public class TriggerHandler
      * sets payload output
      * @param payloadOutput destination of payloads
      */
-    public void setPayloadOutput(DAQComponentOutputProcess payloadOutput) {
+    public void setOutputEngine(DAQComponentOutputProcess payloadOutput) {
         this.payloadOutput = payloadOutput;
     }
 
@@ -380,11 +384,13 @@ public class TriggerHandler
         } else {
             synchronized (inputQueue) {
                 if (mainThread == null) {
-                    log.error("Attempting to queue input without input thread");
+                    if (payload != null) {
+                        log.error("Attempting to queue " + payload +
+                                  " without input thread");
+                    }
                 } else if (payload != null) {
                     inputQueue.add(payload);
                 } else {
-                    mainThread.addedFlush();
                     inputQueue.add(FLUSH_PAYLOAD);
                 }
                 inputQueue.notify();
@@ -442,7 +448,7 @@ public class TriggerHandler
                 }
 
                 // loop over triggers
-                for (ITrigger trigger : triggerList) {
+                for (ITriggerAlgorithm trigger : triggerList) {
                     try {
                         trigger.runTrigger(hit);
                     } catch (TriggerException e) {
@@ -485,7 +491,7 @@ public class TriggerHandler
                     count++;
 
                     // loop over triggers
-                    for (ITrigger trigger : triggerList) {
+                    for (ITriggerAlgorithm trigger : triggerList) {
                         try {
                             trigger.runTrigger(tPayload);
                         } catch (TriggerException e) {
@@ -537,8 +543,18 @@ public class TriggerHandler
     /**
      * getter for count
      * @return count
+     * @deprecated use getTotalProcessed()
      */
-    public int getCount() {
+    public long getCount() {
+        return getTotalProcessed();
+    }
+
+    /**
+     * getter for total number of payloads processed
+     * @return count
+     */
+    public long getTotalProcessed()
+    {
         return count;
     }
 
@@ -546,7 +562,7 @@ public class TriggerHandler
      * getter for triggerList
      * @return trigger list
      */
-    public List<ITrigger> getTriggerList() {
+    public List<ITriggerAlgorithm> getTriggerList() {
         return triggerList;
     }
 
@@ -554,8 +570,20 @@ public class TriggerHandler
      * getter for SourceID
      * @return sourceID
      */
-    public ISourceID getSourceID() {
+    public ISourceID getSourceObject() {
         return sourceId;
+    }
+
+    /**
+     * getter for SourceID
+     * @return sourceID
+     */
+    public int getSourceId() {
+        if (sourceId == null) {
+            throw new Error("Source ID has not been set");
+        }
+
+        return sourceId.getSourceID();
     }
 
     void complainAboutNonTrigger(IWriteablePayload payload)
@@ -658,7 +686,7 @@ public class TriggerHandler
         return earliestPayloadOfInterest;
     }
 
-    protected void setEarliestPayloadOfInterest(IPayload earliest) {
+    public void setEarliestPayloadOfInterest(IPayload earliest) {
         earliestPayloadOfInterest = earliest;
     }
 
@@ -671,7 +699,7 @@ public class TriggerHandler
         IPayload earliestPayloadOverall = null;
 
         // loop over triggers and find earliest time of interest
-        for (ITrigger trigger : triggerList) {
+        for (ITriggerAlgorithm trigger : triggerList) {
             IPayload earliestPayload = trigger.getEarliestPayloadOfInterest();
             if (earliestPayload != null) {
                 // if payload < earliest
@@ -849,6 +877,7 @@ public class TriggerHandler
                     }
                     if (payload == FLUSH_PAYLOAD) {
                         sawFlush = true;
+                        break;
                     }
                 }
             }

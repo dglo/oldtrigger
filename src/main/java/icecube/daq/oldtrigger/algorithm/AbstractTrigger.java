@@ -1,7 +1,7 @@
 /*
  * class: AbstractTrigger
  *
- * Version $Id: AbstractTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: AbstractTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: August 19 2005
  *
@@ -27,6 +27,8 @@ import icecube.daq.payload.IReadoutRequestElement;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.SourceIdRegistry;
+import icecube.daq.payload.impl.SourceID;
+import icecube.daq.trigger.common.ITriggerManager;
 import icecube.daq.trigger.exceptions.ConfigException;
 import icecube.daq.trigger.exceptions.IllegalParameterValueException;
 import icecube.daq.trigger.exceptions.TriggerException;
@@ -48,7 +50,7 @@ import org.apache.commons.logging.LogFactory;
  * ITriggerConfig, ITriggerControl, and ITriggerMonitor interfaces. All specific trigger
  * classes derive from this class.
  *
- * @version $Id: AbstractTrigger.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: AbstractTrigger.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
 public abstract class AbstractTrigger
@@ -168,8 +170,28 @@ public abstract class AbstractTrigger
      * Get source id.
      * @return sourceId
      */
-    public ISourceID getSourceId() {
+    public ISourceID getSourceObject() {
         return sourceId;
+    }
+
+    /**
+     * Get source id.
+     * @return sourceId
+     */
+    public int getSourceId() {
+        if (sourceId == null) {
+            throw new Error("Source ID has not been set");
+        }
+
+        return sourceId.getSourceID();
+    }
+
+    /**
+     * Set source id.
+     * @param sourceId
+     */
+    public void setSourceId(int srcId) {
+        setSourceId(new SourceID(srcId));
     }
 
     /**
@@ -258,6 +280,17 @@ public abstract class AbstractTrigger
      */
     public IPayload getEarliestPayloadOfInterest() {
         return earliestPayloadOfInterest;
+    }
+
+    /**
+     * Set the trigger manager of this trigger.
+     * @param triggerManager trigger manager
+     */
+    public void setTriggerManager(ITriggerManager triggerManager) {
+        triggerHandler = (ITriggerHandler) triggerManager;
+
+	// pass DOMRegistry to hitFilter
+	hitFilter.setDomRegistry(triggerHandler.getDOMRegistry());
     }
 
     /**

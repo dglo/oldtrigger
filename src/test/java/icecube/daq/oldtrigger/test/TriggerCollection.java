@@ -41,11 +41,11 @@ public abstract class TriggerCollection
 
     public void addToHandler(ITriggerHandler trigHandler)
     {
-        ISourceID srcId = trigHandler.getSourceID();
+        int srcId = trigHandler.getSourceId();
 
         int numAdded = 0;
         for (AbstractTrigger t : list) {
-            if (srcId.equals(t.getSourceId())) {
+            if (srcId == t.getSourceId()) {
                 trigHandler.addTrigger(t);
                 numAdded++;
             }

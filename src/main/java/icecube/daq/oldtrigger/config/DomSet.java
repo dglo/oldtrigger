@@ -96,6 +96,10 @@ public class DomSet
      * @return true if dom is in set, false otherwise
      */
     public boolean inSet(IDOMID dom) {
+        if (dom == null) {
+            return false;
+        }
+
         String domId = dom.toString().toLowerCase();
         return set.contains(domId);
     }

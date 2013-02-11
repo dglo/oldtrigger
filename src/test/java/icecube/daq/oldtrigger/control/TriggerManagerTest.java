@@ -82,7 +82,7 @@ public class TriggerManagerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         HKN1Splicer splicer = new HKN1Splicer(trigMgr);
         trigMgr.setSplicer(splicer);
@@ -166,7 +166,7 @@ public class TriggerManagerTest
         MockOutputProcess outProc = new MockOutputProcess();
         outProc.setOutputChannel(new MockOutputChannel());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         MockSplicer splicer = new MockSplicer(trigMgr);
         trigMgr.setSplicer(splicer);

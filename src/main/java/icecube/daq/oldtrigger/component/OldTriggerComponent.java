@@ -17,7 +17,8 @@ import icecube.daq.oldtrigger.config.DomSetFactory;
 import icecube.daq.oldtrigger.config.TriggerBuilder;
 import icecube.daq.oldtrigger.control.DummyTriggerManager;
 import icecube.daq.oldtrigger.control.GlobalTriggerManager;
-import icecube.daq.oldtrigger.control.ITriggerManager;
+import icecube.daq.oldtrigger.control.IOldManager;
+import icecube.daq.oldtrigger.control.ITriggerHandler;
 import icecube.daq.oldtrigger.control.TriggerManager;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.ISourceID;
@@ -26,6 +27,9 @@ import icecube.daq.payload.impl.VitreousBufferCache;
 import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.SpliceableFactory;
 import icecube.daq.splicer.Splicer;
+import icecube.daq.trigger.common.DAQTriggerComponent;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
+import icecube.daq.trigger.common.ITriggerManager;
 import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
@@ -36,10 +40,11 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class TriggerComponent
+public class OldTriggerComponent
     extends DAQComponent
+    implements DAQTriggerComponent
 {
-    private static final Log log = LogFactory.getLog(TriggerComponent.class);
+    private static final Log log = LogFactory.getLog(OldTriggerComponent.class);
 
     public static final String DEFAULT_AMANDA_HOST = "ic-twrdaq00";
     public static final int DEFAULT_AMANDA_PORT = 12014;
@@ -47,7 +52,7 @@ public class TriggerComponent
     private ISourceID sourceId;
     private IByteBufferCache inCache;
     private IByteBufferCache outCache;
-    private ITriggerManager triggerManager;
+    private IOldManager triggerManager;
     private Splicer splicer;
     private SpliceablePayloadReader inputEngine;
     private DAQComponentOutputProcess outputEngine;
@@ -58,11 +63,13 @@ public class TriggerComponent
     private boolean useDummy;
     private boolean isGlobalTrigger;
 
-    public TriggerComponent(String name, int id) {
+    private List<ITriggerAlgorithm> algorithms;
+
+    public OldTriggerComponent(String name, int id) {
         this(name, id, DEFAULT_AMANDA_HOST, DEFAULT_AMANDA_PORT);
     }
 
-    public TriggerComponent(String name, int id,
+    public OldTriggerComponent(String name, int id,
                             String amandaHost, int amandaPort) {
         super(name, id);
 
@@ -152,7 +159,7 @@ public class TriggerComponent
 
         // Create and register output engine
         outputEngine = new SimpleOutputEngine(name, id, name + "OutputEngine");
-        triggerManager.setPayloadOutput(outputEngine);
+        triggerManager.setOutputEngine(outputEngine);
         addMonitoredEngine(outputType, outputEngine);
 
     }
@@ -163,9 +170,19 @@ public class TriggerComponent
         outputEngine.destroyProcessor();
     }
 
-    public void flush()
+    public void flushTriggers()
     {
         triggerManager.flush();
+    }
+
+    /**
+     * Get the list of configured algorithms.
+     *
+     * @return list of algorithms
+     */
+    public List<ITriggerAlgorithm> getAlgorithms()
+    {
+        return algorithms;
     }
 
     public IByteBufferCache getInputCache()
@@ -280,9 +297,8 @@ public class TriggerComponent
         }
 
         // Add triggers to the trigger manager
-        List<ITrigger> currentTriggers;
         try {
-            currentTriggers =
+            algorithms =
                 TriggerBuilder.buildTriggers(triggerConfigFile, sourceId);
         } catch (TriggerException te) {
             throw new DAQCompException("Cannot build triggers from \"" +
@@ -290,25 +306,25 @@ public class TriggerComponent
                                        sourceId, te);
         }
 
-        if (currentTriggers.size()  == 0) {
+        if (algorithms.size()  == 0) {
             throw new DAQCompException("No triggers specified in \"" +
                                        triggerConfigFile + "\" for " +
                                        sourceId);
         }
 
-        for (ITrigger trigger : currentTriggers) {
-            trigger.setTriggerHandler(triggerManager);
+        for (ITriggerAlgorithm trigger : algorithms) {
+            ((ITrigger) trigger).setTriggerHandler(triggerManager);
         }
-        triggerManager.addTriggers(currentTriggers);
+        triggerManager.addTriggers(algorithms);
 
-        addTriggerNames(currentTriggers);
+        addTriggerNames(algorithms);
     }
 
-    private static final void addTriggerNames(List<ITrigger> triggers)
+    private static final void addTriggerNames(List<ITriggerAlgorithm> triggers)
     {
         int max = 0;
 
-        for (ITrigger trig : triggers) {
+        for (ITriggerAlgorithm trig : triggers) {
             if (max < trig.getTriggerType()) {
                 max = trig.getTriggerType();
             }
@@ -316,7 +332,7 @@ public class TriggerComponent
 
         String[] typeNames = new String[max + 1];
 
-        for (ITrigger trig : triggers) {
+        for (ITriggerAlgorithm trig : triggers) {
             String trigName = trig.getTriggerName();
 
             if (trigName == null) {
@@ -371,6 +387,6 @@ public class TriggerComponent
      */
     public String getVersionInfo()
     {
-	return "$Id: TriggerComponent.java 14205 2013-02-11 20:36:28Z dglo $";
+	return "$Id: OldTriggerComponent.java 14206 2013-02-11 22:15:22Z dglo $";
     }
 }

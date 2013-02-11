@@ -1,7 +1,7 @@
 /*
  * interface: ITriggerManager
  *
- * Version $Id: ITriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
+ * Version $Id: ITriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
  *
  * Date: March 31 2005
  *
@@ -15,6 +15,8 @@ import icecube.daq.oldtrigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.ISourceID;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
+import icecube.daq.trigger.common.ITriggerManager;
 import icecube.daq.util.DOMRegistry;
 
 import java.util.List;
@@ -22,10 +24,10 @@ import java.util.List;
 /**
  * This interface defines the behavior of a TriggerHandler
  *
- * @version $Id: ITriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: ITriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
  * @author pat
  */
-public interface ITriggerHandler extends IPayloadProducer
+public interface ITriggerHandler extends IPayloadProducer, ITriggerManager
 {
 
     /**
@@ -38,13 +40,13 @@ public interface ITriggerHandler extends IPayloadProducer
      * add a trigger to the list of managed triggers
      * @param iTrigger trigger to add
      */
-    void addTrigger(ITrigger iTrigger);
+    void addTrigger(ITriggerAlgorithm iTrigger);
 
     /**
      * add a list of triggers
      * @param triggers
      */
-    void addTriggers(List<ITrigger> triggers);
+    void addTriggers(List<ITriggerAlgorithm> triggers);
 
     /**
      * clear list of triggers
@@ -77,7 +79,13 @@ public interface ITriggerHandler extends IPayloadProducer
      * Get the SourceID
      * @return a ISourceID
      */
-    ISourceID getSourceID();
+    ISourceID getSourceObject();
+
+    /**
+     * Get the SourceID
+     * @return a ISourceID
+     */
+    int getSourceId();
 
     /**
      * Get the monitor object.
@@ -115,7 +123,7 @@ public interface ITriggerHandler extends IPayloadProducer
      * Get the number of payloads processed.
      * @return number of payloads processed
      */
-    int getCount();
+    long getTotalProcessed();
 
     /**
      * Set the outgoing payload buffer cache.

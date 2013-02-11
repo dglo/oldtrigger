@@ -132,7 +132,7 @@ public class InIceTriggerEndToEndTest
         outProc.setOutputChannel(new MockOutputChannel());
         outProc.setValidator(trigCfg.getInIceValidator());
 
-        trigMgr.setPayloadOutput(outProc);
+        trigMgr.setOutputEngine(outProc);
 
         HKN1Splicer splicer = new HKN1Splicer(trigMgr);
         trigMgr.setSplicer(splicer);

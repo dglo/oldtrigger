@@ -29,6 +29,7 @@ import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
 import icecube.daq.payload.impl.UTCTime;
+import icecube.daq.trigger.common.ITriggerAlgorithm;
 import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
@@ -47,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class ...does what?
  *
- * @version $Id: GlobalTriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
+ * @version $Id: GlobalTriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
  * @author shseo
  */
 public class GlobalTriggerHandler
@@ -71,7 +72,7 @@ public class GlobalTriggerHandler
     /**
      * List of defined triggers
      */
-    private List<ITrigger> configuredTriggerList;
+    private List<ITriggerAlgorithm> configuredTriggerList;
 
     /**
      * Bag of triggers to issue
@@ -185,14 +186,14 @@ public class GlobalTriggerHandler
         triggerBag.add(triggerPayload);
     }
 
-    public void addTrigger(ITrigger iTrigger) {
+    public void addTrigger(ITriggerAlgorithm iTrigger) {
 
         // check for duplicates
         boolean good = true;
-        for (ITrigger existing : configuredTriggerList) {
+        for (ITriggerAlgorithm existing : configuredTriggerList) {
             if ( (iTrigger.getTriggerType() == existing.getTriggerType()) &&
                  (iTrigger.getTriggerConfigId() == existing.getTriggerConfigId()) &&
-                 (iTrigger.getSourceId().getSourceID() == existing.getSourceId().getSourceID()) ) {
+                 (iTrigger.getSourceId() == existing.getSourceId()) ) {
                 log.error("Attempt to add duplicate trigger to trigger list!");
                 good = false;
             }
@@ -200,10 +201,10 @@ public class GlobalTriggerHandler
 
         if (good) {
             log.info("Setting OutputFactory of Trigger");
-            iTrigger.setTriggerFactory(outputFactory);
+            ((ITrigger) iTrigger).setTriggerFactory(outputFactory);
             log.info("Adding Trigger to configuredTriggerList");
             configuredTriggerList.add(iTrigger);
-            iTrigger.setTriggerHandler(this);
+            ((ITrigger) iTrigger).setTriggerHandler(this);
         }
     }
 
@@ -212,7 +213,7 @@ public class GlobalTriggerHandler
      *
      * @param triggers
      */
-    public void addTriggers(List<ITrigger> triggers) {
+    public void addTriggers(List<ITriggerAlgorithm> triggers) {
         clearTriggers();
         configuredTriggerList.addAll(triggers);
     }
@@ -228,7 +229,7 @@ public class GlobalTriggerHandler
     {
         HashMap<String, Long> map = new HashMap<String, Long>();
 
-        for (ITrigger trigger : configuredTriggerList) {
+        for (ITriggerAlgorithm trigger : configuredTriggerList) {
             map.put(trigger.getTriggerName(),
                     new Long(trigger.getTriggerCounter()));
         }
@@ -240,7 +241,7 @@ public class GlobalTriggerHandler
         return null;
     }
 
-    public List<ITrigger> getConfiguredTriggerList() {
+    public List<ITriggerAlgorithm> getConfiguredTriggerList() {
         return configuredTriggerList;
     }
 
@@ -272,8 +273,8 @@ public class GlobalTriggerHandler
             log.info("Flushing GlobalTriggers");
         }
 
-        for (ITrigger trigger : configuredTriggerList) {
-            trigger.flush();
+        for (ITriggerAlgorithm trigger : configuredTriggerList) {
+            ((ITrigger) trigger).flush();
             if (log.isInfoEnabled()) {
                 log.info("GlobalTrigger count for " + trigger.getTriggerName() +
                          " is " + trigger.getTriggerCounter());
@@ -305,7 +306,7 @@ public class GlobalTriggerHandler
         buf.append("Total # of merged GT events = " +
                   miTotalOutputMergedGlobalTriggers).append(nl);
         buf.append(nl);
-        for (ITrigger trigger : configuredTriggerList) {
+        for (ITriggerAlgorithm trigger : configuredTriggerList) {
             buf.append("Total # of " + trigger.getTriggerName() + "= " +
                        trigger.getTriggerCounter());
             buf.append(nl);
@@ -324,7 +325,7 @@ public class GlobalTriggerHandler
         miTotalOutputGlobalTriggers = 0;
         miTotalOutputMergedGlobalTriggers = 0;
         earliestPayloadOfInterest = null;
-        configuredTriggerList = new ArrayList<ITrigger>();
+        configuredTriggerList = new ArrayList<ITriggerAlgorithm>();
         longestTrigger = 0.0;
 
         inputHandler = new TriggerInput();
@@ -486,7 +487,7 @@ public class GlobalTriggerHandler
                         }
 
                         //sendPayloadToFilterDestinantion((IPayload) subPayloads.get(i));
-                        for (ITrigger configuredTrigger : configuredTriggerList) {
+                        for (ITriggerAlgorithm configuredTrigger : configuredTriggerList) {
                             try {
                                 configuredTrigger.runTrigger(subPayload);
                                 int triggerCounter = configuredTrigger.getTriggerCounter();
@@ -505,7 +506,7 @@ public class GlobalTriggerHandler
                     }
                 }else{
                     log.debug("Now start processing single trigger input");
-                    for (ITrigger configuredTrigger : configuredTriggerList) {
+                    for (ITriggerAlgorithm configuredTrigger : configuredTriggerList) {
                         try {
                             configuredTrigger.runTrigger(tInputTrigger);
                         } catch (TriggerException e) {
@@ -540,10 +541,22 @@ public class GlobalTriggerHandler
 
     /**
      * getter for SourceID
+     * @return sourceID
+     */
+    public ISourceID getSourceObject() {
+        return sourceId;
+    }
+
+    /**
+     * getter for SourceID
      * @return sourceId
      */
-    public ISourceID getSourceID() {
-        return sourceId;
+    public int getSourceId() {
+        if (sourceId == null) {
+            throw new Error("Source ID has not been set");
+        }
+
+        return sourceId.getSourceID();
     }
 
     /**
@@ -672,7 +685,7 @@ public class GlobalTriggerHandler
 
         log.debug("SET EARLIEST TIME:");
         //--loop over triggers and find earliest time of interest
-        for (ITrigger trigger : configuredTriggerList) {
+        for (ITriggerAlgorithm trigger : configuredTriggerList) {
             IPayload earliestPayload = trigger.getEarliestPayloadOfInterest();
 
             if (earliestPayload != null) {
@@ -761,7 +774,7 @@ public class GlobalTriggerHandler
         return allowTimeGap;
     }
 
-    public void setPayloadOutput(DAQComponentOutputProcess payloadOutput)
+    public void setOutputEngine(DAQComponentOutputProcess payloadOutput)
     {
         this.payloadOutput = payloadOutput;
     }
@@ -780,7 +793,20 @@ public class GlobalTriggerHandler
 	return domRegistry;
     }
 
-    public int getCount()
+    /**
+     * getter for count
+     * @return count
+     * @deprecated use getTotalProcessed()
+     */
+    public long getCount() {
+        return getTotalProcessed();
+    }
+
+    /**
+     * getter for total number of payloads processed
+     * @return count
+     */
+    public long getTotalProcessed()
     {
         return miTotalInputTriggers;
     }
