@@ -1,7 +1,7 @@
 /*
  * class: VetoTrigger
  *
- * Version $Id: VetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: VetoTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  *
  * Date: January 25 2006
  *
@@ -10,9 +10,9 @@
 
 package icecube.daq.oldtrigger.algorithm;
 
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.ITriggerRequestPayload;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class is to provide commond methods for any N-VetoTrigger.
  *
- * @version $Id: VetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: VetoTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  * @author shseo
  */
 public abstract class VetoTrigger

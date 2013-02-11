@@ -1,7 +1,7 @@
 /*
  * class: CalibrationTrigger
  *
- * Version $Id: CalibrationTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: CalibrationTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  *
  * Date: August 27 2005
  *
@@ -13,12 +13,12 @@ package icecube.daq.oldtrigger.algorithm;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldtrigger.config.TriggerParameter;
 import icecube.daq.oldtrigger.control.DummyPayload;
-import icecube.daq.oldtrigger.exceptions.ConfigException;
-import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
-import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.IPayload;
+import icecube.daq.trigger.exceptions.ConfigException;
+import icecube.daq.trigger.exceptions.IllegalParameterValueException;
+import icecube.daq.trigger.exceptions.TriggerException;
+import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
  * This trigger is an example of an 'instantaneous trigger' since it is capable
  * of making a decision based only on the current hit.
  *
- * @version $Id: CalibrationTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: CalibrationTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  * @author pat
  */
 public class CalibrationTrigger extends AbstractTrigger
@@ -72,7 +72,7 @@ public class CalibrationTrigger extends AbstractTrigger
      *
      * @param parameter TriggerParameter object.
      *
-     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
      *
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException {
@@ -107,7 +107,7 @@ public class CalibrationTrigger extends AbstractTrigger
      *
      * @param payload payload to process
      *
-     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
+     * @throws icecube.daq.trigger.exceptions.TriggerException
      *          if the algorithm doesn't like this payload
      */
     public void runTrigger(IPayload payload) throws TriggerException {

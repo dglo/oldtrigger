@@ -1,11 +1,10 @@
 package icecube.daq.oldtrigger.algorithm;
 
-import icecube.daq.oldpayload.impl.MasterPayloadFactory;
-import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.io.DAQComponentIOProcess;
 import icecube.daq.io.SpliceablePayloadReader;
+import icecube.daq.oldpayload.impl.MasterPayloadFactory;
+import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.control.TriggerManager;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.oldtrigger.test.ComponentObserver;
 import icecube.daq.oldtrigger.test.CylinderTriggerConfig;
 import icecube.daq.oldtrigger.test.MockAppender;
@@ -19,6 +18,7 @@ import icecube.daq.payload.impl.VitreousBufferCache;
 import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerException;
+import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;

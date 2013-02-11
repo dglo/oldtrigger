@@ -1,7 +1,7 @@
 /*
  * class: TwoVetoTrigger
  *
- * Version $Id: TwoVetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: TwoVetoTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  *
  * Date: January 25 2006
  *
@@ -11,9 +11,9 @@
 package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldtrigger.config.TriggerParameter;
-import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
-import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.ITriggerRequestPayload;
+import icecube.daq.trigger.exceptions.IllegalParameterValueException;
+import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class is accept all incoming triggers but to veto two configured triggers.
  *
- * @version $Id: TwoVetoTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: TwoVetoTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  * @author shseo
  */
 public class TwoVetoTrigger
@@ -135,7 +135,7 @@ public class TwoVetoTrigger
      * This method performs configuration.
      *
      * @param parameter TriggerParameter object
-     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException
     {

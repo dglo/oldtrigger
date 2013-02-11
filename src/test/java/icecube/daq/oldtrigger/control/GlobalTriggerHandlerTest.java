@@ -1,7 +1,6 @@
 package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.oldtrigger.test.MockAppender;
 import icecube.daq.oldtrigger.test.MockHit;
 import icecube.daq.oldtrigger.test.MockOutputChannel;
@@ -15,6 +14,7 @@ import icecube.daq.payload.ILoadablePayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IReadoutRequest;
 import icecube.daq.payload.SourceIdRegistry;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.io.IOException;
 import java.util.ArrayList;

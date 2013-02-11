@@ -13,12 +13,12 @@ package icecube.daq.oldtrigger.algorithm;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldtrigger.config.TriggerParameter;
 import icecube.daq.oldtrigger.control.DummyPayload;
-import icecube.daq.oldtrigger.exceptions.ConfigException;
-import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
-import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.IPayload;
+import icecube.daq.trigger.exceptions.ConfigException;
+import icecube.daq.trigger.exceptions.IllegalParameterValueException;
+import icecube.daq.trigger.exceptions.TriggerException;
+import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -65,7 +65,7 @@ public class TrigBoardTrigger extends AbstractTrigger
      *
      * @param parameter TriggerParameter object.
      *
-     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
      *
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException {
@@ -92,7 +92,7 @@ public class TrigBoardTrigger extends AbstractTrigger
      *
      * @param payload payload to process
      *
-     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
+     * @throws icecube.daq.trigger.exceptions.TriggerException
      *          if the algorithm doesn't like this payload
      */
     public void runTrigger(IPayload payload) throws TriggerException {

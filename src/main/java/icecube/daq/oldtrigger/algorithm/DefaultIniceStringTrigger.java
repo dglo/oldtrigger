@@ -4,14 +4,14 @@ import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldpayload.impl.TriggerRequestPayload;
 import icecube.daq.oldtrigger.config.TriggerParameter;
 import icecube.daq.oldtrigger.control.DummyPayload;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
-import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
-import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IReadoutRequest;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.IUTCTime;
 import icecube.daq.payload.SourceIdRegistry;
+import icecube.daq.trigger.exceptions.TriggerException;
+import icecube.daq.trigger.exceptions.UnknownParameterException;
+import icecube.daq.trigger.exceptions.IllegalParameterValueException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

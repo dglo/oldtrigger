@@ -1,7 +1,7 @@
 /*
  * class: FixedRateTrigger
  *
- * Version $Id: FixedRateTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: FixedRateTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  *
  * Date: May 1 2006
  *
@@ -13,12 +13,12 @@ package icecube.daq.oldtrigger.algorithm;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldtrigger.config.TriggerParameter;
 import icecube.daq.oldtrigger.control.DummyPayload;
-import icecube.daq.oldtrigger.exceptions.IllegalParameterValueException;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
-import icecube.daq.oldtrigger.exceptions.UnknownParameterException;
 import icecube.daq.payload.IHitPayload;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.IUTCTime;
+import icecube.daq.trigger.exceptions.IllegalParameterValueException;
+import icecube.daq.trigger.exceptions.TriggerException;
+import icecube.daq.trigger.exceptions.UnknownParameterException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class implements a trigger that is satisfied every N nanoseconds.
  *
- * @version $Id: FixedRateTrigger.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: FixedRateTrigger.java 14205 2013-02-11 20:36:28Z dglo $
  * @author pat
  */
 public class FixedRateTrigger extends AbstractTrigger
@@ -83,7 +83,7 @@ public class FixedRateTrigger extends AbstractTrigger
      *
      * @param parameter TriggerParameter object.
      *
-     * @throws icecube.daq.oldtrigger.exceptions.UnknownParameterException
+     * @throws icecube.daq.trigger.exceptions.UnknownParameterException
      *
      */
     public void addParameter(TriggerParameter parameter) throws UnknownParameterException, IllegalParameterValueException {
@@ -149,7 +149,7 @@ public class FixedRateTrigger extends AbstractTrigger
      *
      * @param payload payload to process
      *
-     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
+     * @throws icecube.daq.trigger.exceptions.TriggerException
      *          if the algorithm doesn't like this payload
      */
     public void runTrigger(IPayload payload) throws TriggerException {

@@ -5,7 +5,6 @@ import icecube.daq.io.SpliceablePayloadReader;
 import icecube.daq.oldpayload.impl.MasterPayloadFactory;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.control.TriggerManager;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IReadoutRequestElement;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.PayloadRegistry;
@@ -15,6 +14,7 @@ import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.Splicer;
 import icecube.daq.splicer.SplicerException;
 import icecube.daq.splicer.StrandTail;
+import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;

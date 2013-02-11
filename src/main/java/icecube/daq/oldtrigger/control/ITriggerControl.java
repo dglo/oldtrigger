@@ -1,7 +1,7 @@
 /*
  * interface: ITriggerControl
  *
- * Version $Id: ITriggerControl.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: ITriggerControl.java 14205 2013-02-11 20:36:28Z dglo $
  *
  * Date: August 22 2005
  *
@@ -11,13 +11,13 @@
 package icecube.daq.oldtrigger.control;
 
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IPayload;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 /**
  * This interface defines the control aspect of a trigger.
  *
- * @version $Id: ITriggerControl.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: ITriggerControl.java 14205 2013-02-11 20:36:28Z dglo $
  * @author pat
  */
 public interface ITriggerControl
@@ -50,7 +50,7 @@ public interface ITriggerControl
     /**
      * Run the trigger algorithm on a payload.
      * @param payload payload to process
-     * @throws icecube.daq.oldtrigger.exceptions.TriggerException if the algorithm doesn't like this payload
+     * @throws icecube.daq.trigger.exceptions.TriggerException if the algorithm doesn't like this payload
      */
     void runTrigger(IPayload payload) throws TriggerException;
 

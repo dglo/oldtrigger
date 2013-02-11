@@ -19,7 +19,6 @@ import icecube.daq.oldtrigger.control.DummyTriggerManager;
 import icecube.daq.oldtrigger.control.GlobalTriggerManager;
 import icecube.daq.oldtrigger.control.ITriggerManager;
 import icecube.daq.oldtrigger.control.TriggerManager;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IByteBufferCache;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.SourceIdRegistry;
@@ -27,6 +26,7 @@ import icecube.daq.payload.impl.VitreousBufferCache;
 import icecube.daq.splicer.HKN1Splicer;
 import icecube.daq.splicer.SpliceableFactory;
 import icecube.daq.splicer.Splicer;
+import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.File;
@@ -371,6 +371,6 @@ public class TriggerComponent
      */
     public String getVersionInfo()
     {
-	return "$Id: TriggerComponent.java 14204 2013-02-11 19:52:57Z dglo $";
+	return "$Id: TriggerComponent.java 14205 2013-02-11 20:36:28Z dglo $";
     }
 }

@@ -1,10 +1,10 @@
 package icecube.daq.oldtrigger.config;
 
 import icecube.daq.oldtrigger.algorithm.ITrigger;
-import icecube.daq.oldtrigger.exceptions.ConfigException;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.ISourceID;
 import icecube.daq.payload.impl.SourceID;
+import icecube.daq.trigger.exceptions.ConfigException;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -2,10 +2,10 @@ package icecube.daq.oldtrigger.algorithm;
 
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldtrigger.control.DummyPayload;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.IPayload;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.IUTCTime;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,7 +39,7 @@ public abstract class AmandaTrigger
      *
      * @param payload payload to process
      *
-     * @throws icecube.daq.oldtrigger.exceptions.TriggerException
+     * @throws icecube.daq.trigger.exceptions.TriggerException
      *          if the algorithm doesn't like this payload
      */
     public void runTrigger(IPayload payload) throws TriggerException {

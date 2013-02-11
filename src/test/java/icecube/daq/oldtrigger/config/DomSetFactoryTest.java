@@ -1,7 +1,7 @@
 package icecube.daq.oldtrigger.config;
 
-import icecube.daq.oldtrigger.exceptions.ConfigException;
 import icecube.daq.oldtrigger.test.MockAppender;
+import icecube.daq.trigger.exceptions.ConfigException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.BufferedWriter;

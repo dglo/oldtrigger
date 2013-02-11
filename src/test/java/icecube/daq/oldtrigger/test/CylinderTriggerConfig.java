@@ -3,12 +3,12 @@ package icecube.daq.oldtrigger.test;
 import icecube.daq.oldtrigger.algorithm.AbstractTrigger;
 import icecube.daq.oldtrigger.config.TriggerParameter;
 import icecube.daq.oldtrigger.config.TriggerReadout;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.payload.ITriggerRequestPayload;
 import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.PayloadChecker;
 import icecube.daq.splicer.SplicerException;
 import icecube.daq.splicer.StrandTail;
+import icecube.daq.trigger.exceptions.TriggerException;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

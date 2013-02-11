@@ -17,7 +17,6 @@ import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.algorithm.ITrigger;
 import icecube.daq.oldtrigger.config.DomSetFactory;
 import icecube.daq.oldtrigger.config.TriggerReadout;
-import icecube.daq.oldtrigger.exceptions.TriggerException;
 import icecube.daq.oldtrigger.monitor.PayloadBagMonitor;
 import icecube.daq.oldtrigger.monitor.TriggerHandlerMonitor;
 import icecube.daq.payload.IByteBufferCache;
@@ -30,6 +29,7 @@ import icecube.daq.payload.IWriteablePayload;
 import icecube.daq.payload.SourceIdRegistry;
 import icecube.daq.payload.impl.SourceID;
 import icecube.daq.payload.impl.UTCTime;
+import icecube.daq.trigger.exceptions.TriggerException;
 import icecube.daq.util.DOMRegistry;
 
 import java.io.IOException;
@@ -47,7 +47,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class ...does what?
  *
- * @version $Id: GlobalTriggerHandler.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: GlobalTriggerHandler.java 14205 2013-02-11 20:36:28Z dglo $
  * @author shseo
  */
 public class GlobalTriggerHandler
