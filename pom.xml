@@ -26,7 +26,7 @@
         <artifactId>maven-jar-plugin</artifactId>
         <executions>
           <execution>
-            <id>global-trig</id>
+            <id>old-global-trig</id>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -42,7 +42,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>inice-trig</id>
+            <id>old-inice-trig</id>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -58,7 +58,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>icetop-trig</id>
+            <id>old-icetop-trig</id>
             <goals>
               <goal>jar</goal>
             </goals>
