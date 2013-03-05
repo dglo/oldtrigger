@@ -12,6 +12,7 @@ package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;
+import icecube.daq.juggler.alert.Alerter;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.algorithm.ITrigger;
@@ -48,7 +49,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class ...does what?
  *
- * @version $Id: GlobalTriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
+ * @version $Id: GlobalTriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
  * @author shseo
  */
 public class GlobalTriggerHandler
@@ -930,8 +931,10 @@ public class GlobalTriggerHandler
         return outputQueue.size();
     }
 
-    public void switchToNewRun()
+    public void switchToNewRun(Alerter alerter, int runNumber)
     {
+        log.error("Warning, not sending histograms to I3Live for run " +
+                  runNumber);
         triggerBag.resetUID();
     }
 

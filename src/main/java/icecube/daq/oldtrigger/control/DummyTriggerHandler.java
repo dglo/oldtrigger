@@ -12,6 +12,7 @@ package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;
+import icecube.daq.juggler.alert.Alerter;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
 import icecube.daq.oldtrigger.algorithm.ITrigger;
 import icecube.daq.oldtrigger.config.DomSetFactory;
@@ -403,7 +404,7 @@ public class DummyTriggerHandler
         //outCache = cache;
     }
 
-    public void switchToNewRun()
+    public void switchToNewRun(Alerter alerter, int runNumber)
     {
         // does nothing
     }

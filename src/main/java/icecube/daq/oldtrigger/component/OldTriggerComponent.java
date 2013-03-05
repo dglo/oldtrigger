@@ -360,7 +360,7 @@ public class OldTriggerComponent
      */
     public void switching(int runNumber) throws DAQCompException {
         if (isGlobalTrigger) {
-            triggerManager.switchToNewRun();
+            triggerManager.switchToNewRun(getAlerter(), runNumber);
         }
     }
 
@@ -387,6 +387,6 @@ public class OldTriggerComponent
      */
     public String getVersionInfo()
     {
-	return "$Id: OldTriggerComponent.java 14206 2013-02-11 22:15:22Z dglo $";
+	return "$Id: OldTriggerComponent.java 14299 2013-03-06 02:14:30Z dglo $";
     }
 }

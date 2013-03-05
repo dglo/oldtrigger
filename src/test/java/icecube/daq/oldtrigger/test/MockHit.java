@@ -17,10 +17,16 @@ public class MockHit
     extends MockPayload
     implements IHitPayload, Spliceable
 {
-    private static final int LENGTH = 17;
+    private static final int LENGTH = 38;
+
+    private static final int TRIGTYPE = 0;
+    private static final int CFG_ID = 0;
+    private static final short TRIGMODE = 0;
 
     private MockSourceID srcId;
     private long domId;
+
+    private ByteBuffer backingBuf;
 
     public MockHit(long time)
     {
@@ -72,7 +78,14 @@ public class MockHit
 
     public ByteBuffer getPayloadBacking()
     {
-        return null;
+        if (backingBuf == null) {
+            backingBuf = ByteBuffer.allocate(LENGTH);
+
+            writePayloadToBuffer(backingBuf, 0, getUTCTime(), TRIGTYPE, CFG_ID,
+                                 srcId.getSourceID(), domId, TRIGMODE);
+        }
+
+        return backingBuf;
     }
 
     public int getPayloadInterfaceType()
@@ -135,11 +148,36 @@ public class MockHit
                             "-byte buffer, not " + buf.limit());
         }
 
-        for (char ch = 1; ch < LENGTH; ch++) {
-            buf.putChar(offset + (int) ch - 1, (char) ch);
-        }
+        writePayloadToBuffer(buf, offset, getUTCTime(), TRIGTYPE, CFG_ID,
+                             srcId.getSourceID(), domId, TRIGMODE);
 
         return LENGTH;
+    }
+
+    /**
+     * Write a simple hit to the byte buffer
+     * @param buf byte buffer
+     * @param offset index of first byte
+     * @param utcTime UTC time
+     * @param trigType trigger type
+     * @param cfgId trigger configuration ID
+     * @param srcId source ID
+     * @param domId DOM ID
+     * @param trigMode trigger mode
+     */
+    private static void writePayloadToBuffer(ByteBuffer buf, int offset,
+                                             long utcTime, int trigType,
+                                             int cfgId, int srcId, long domId,
+                                             short trigMode)
+    {
+        buf.putInt(offset, LENGTH);
+        buf.putInt(offset + 4, PayloadRegistry.PAYLOAD_ID_SIMPLE_HIT);
+        buf.putLong(offset + 8, utcTime);
+        buf.putInt(offset + 16, trigType);
+        buf.putInt(offset + 20, cfgId);
+        buf.putInt(offset + 24, srcId);
+        buf.putLong(offset + 28, domId);
+        buf.putShort(offset + 36, trigMode);
     }
 
     public String toString()

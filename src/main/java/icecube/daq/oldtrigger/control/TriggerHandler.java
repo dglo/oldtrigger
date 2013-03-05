@@ -1,7 +1,7 @@
 /*
  * class: TriggerHandler
  *
- * Version $Id: TriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
+ * Version $Id: TriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
  *
  * Date: October 25 2004
  *
@@ -12,6 +12,7 @@ package icecube.daq.oldtrigger.control;
 
 import icecube.daq.io.DAQComponentOutputProcess;
 import icecube.daq.io.OutputChannel;
+import icecube.daq.juggler.alert.Alerter;
 import icecube.daq.oldpayload.PayloadInterfaceRegistry;
 import icecube.daq.oldpayload.impl.Payload;
 import icecube.daq.oldpayload.impl.TriggerRequestPayloadFactory;
@@ -50,7 +51,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger.
  *
- * @version $Id: TriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
+ * @version $Id: TriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
  * @author pat
  */
 public class TriggerHandler
@@ -812,7 +813,7 @@ public class TriggerHandler
         return outputQueue.size();
     }
 
-    public void switchToNewRun()
+    public void switchToNewRun(Alerter alerter, int runNumber)
     {
         // does nothing
     }
