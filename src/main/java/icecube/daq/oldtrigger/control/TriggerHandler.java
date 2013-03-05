@@ -1,7 +1,7 @@
 /*
  * class: TriggerHandler
  *
- * Version $Id: TriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
+ * Version $Id: TriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
  *
  * Date: October 25 2004
  *
@@ -50,7 +50,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger.
  *
- * @version $Id: TriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
+ * @version $Id: TriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
  * @author pat
  */
 public class TriggerHandler
@@ -367,6 +367,11 @@ public class TriggerHandler
     public boolean hasUnprocessedPayloads()
     {
         return inputQueue.size() > 0;
+    }
+
+    public boolean isMerged()
+    {
+        throw new Error("Unimplemented");
     }
 
     /**

@@ -48,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class ...does what?
  *
- * @version $Id: GlobalTriggerHandler.java 14206 2013-02-11 22:15:22Z dglo $
+ * @version $Id: GlobalTriggerHandler.java 14293 2013-03-05 21:18:03Z dglo $
  * @author shseo
  */
 public class GlobalTriggerHandler
@@ -385,6 +385,11 @@ public class GlobalTriggerHandler
     public boolean hasUnprocessedPayloads()
     {
         return (inputQueue.size() > 0) || !isMainThreadWaiting();
+    }
+
+    public boolean isMerged()
+    {
+        throw new Error("Unimplemented");
     }
 
     /**

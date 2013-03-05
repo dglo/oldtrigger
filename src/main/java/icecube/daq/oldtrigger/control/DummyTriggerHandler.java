@@ -179,6 +179,11 @@ public class DummyTriggerHandler
         return false;
     }
 
+    public boolean isMerged()
+    {
+        throw new Error("Unimplemented");
+    }
+
     /**
      * Is the output thread waiting for data?
      *

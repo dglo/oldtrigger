@@ -75,6 +75,11 @@ class MockHitRequest
         return uid;
     }
 
+    public boolean isMerged()
+    {
+        throw new Error("Unimplemented");
+    }
+
     public void setReadoutRequest(IReadoutRequest rdoutReq)
     {
         this.rdoutReq = rdoutReq;

@@ -188,6 +188,11 @@ public class MockTriggerRequest
         return uid;
     }
 
+    public boolean isMerged()
+    {
+        throw new Error("Unimplemented");
+    }
+
     public void setGetPayloadsException(Exception ex)
     {
         if (ex instanceof DataFormatException) {
