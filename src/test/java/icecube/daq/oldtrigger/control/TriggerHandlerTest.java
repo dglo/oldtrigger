@@ -326,13 +326,11 @@ public class TriggerHandlerTest
                          1, trigMgr.getInputHandler().size());
         }
 
-        trigMgr.flush();
-
         waitForOutput(trigMgr);
         waitForOutputThread(trigMgr);
 
         assertEquals("Bad number of triggers written",
-                     4, outProc.getNumberWritten());
+                     3, outProc.getNumberWritten());
 
         trigMgr.reset();
         assertEquals("Bad number of input payloads",

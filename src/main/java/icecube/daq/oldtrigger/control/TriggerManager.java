@@ -1,7 +1,7 @@
 /*
  * class: TriggerManager
  *
- * Version $Id: TriggerManager.java 14206 2013-02-11 22:15:22Z dglo $
+ * Version $Id: TriggerManager.java 14497 2013-05-14 16:04:24Z dglo $
  *
  * Date: October 25 2004
  *
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger
  *
- * @version $Id: TriggerManager.java 14206 2013-02-11 22:15:22Z dglo $
+ * @version $Id: TriggerManager.java 14497 2013-05-14 16:04:24Z dglo $
  * @author pat
  */
 public class TriggerManager
@@ -279,6 +279,7 @@ public class TriggerManager
                 log.debug("This is the LAST POSSIBLE SPLICEABLE!");
             }
             process(null);
+            stopThread();
         }
 
         Iterator iter = event.getAllSpliceables().iterator();

@@ -23,8 +23,11 @@ public class MockHit
     private static final int CFG_ID = 0;
     private static final short TRIGMODE = 0;
 
-    private MockSourceID srcId;
+    private int srcId;
     private long domId;
+
+    private MockSourceID srcObj;
+    private MockDOMID domObj;
 
     private ByteBuffer backingBuf;
 
@@ -37,6 +40,7 @@ public class MockHit
     {
         super(time);
 
+        this.srcId = -1;
         this.domId = domId;
     }
 
@@ -63,7 +67,11 @@ public class MockHit
 
     public IDOMID getDOMID()
     {
-        return new MockDOMID(domId);
+        if (domObj == null) {
+            domObj = new MockDOMID(domId);
+        }
+
+        return domObj;
     }
 
     public IUTCTime getHitTimeUTC()
@@ -82,7 +90,7 @@ public class MockHit
             backingBuf = ByteBuffer.allocate(LENGTH);
 
             writePayloadToBuffer(backingBuf, 0, getUTCTime(), TRIGTYPE, CFG_ID,
-                                 srcId.getSourceID(), domId, TRIGMODE);
+                                 srcId, domId, TRIGMODE);
         }
 
         return backingBuf;
@@ -105,11 +113,11 @@ public class MockHit
 
     public ISourceID getSourceID()
     {
-        if (srcId == null) {
-            srcId = new MockSourceID(-1);
+        if (srcObj == null) {
+            srcObj = new MockSourceID(srcId);
         }
 
-        return srcId;
+        return srcObj;
     }
 
     public int getTriggerConfigID()
@@ -129,7 +137,8 @@ public class MockHit
 
     public void setSourceID(int srcId)
     {
-        this.srcId = new MockSourceID(srcId);
+        this.srcId = srcId;
+        srcObj = null;
     }
 
     public int writePayload(boolean writeLoaded, IPayloadDestination dest)
@@ -149,7 +158,7 @@ public class MockHit
         }
 
         writePayloadToBuffer(buf, offset, getUTCTime(), TRIGTYPE, CFG_ID,
-                             srcId.getSourceID(), domId, TRIGMODE);
+                             srcId, domId, TRIGMODE);
 
         return LENGTH;
     }
