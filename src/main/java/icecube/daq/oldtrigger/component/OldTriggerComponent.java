@@ -164,10 +164,18 @@ public class OldTriggerComponent
 
     }
 
+    /**
+     * Close all open files, sockets, etc.
+     *
+     * @throws IOException if there is a problem
+     */
     public void closeAll()
+        throws IOException
     {
         inputEngine.destroyProcessor();
         outputEngine.destroyProcessor();
+
+        super.closeAll();
     }
 
     public void flushTriggers()
@@ -387,6 +395,6 @@ public class OldTriggerComponent
      */
     public String getVersionInfo()
     {
-	return "$Id: OldTriggerComponent.java 14299 2013-03-06 02:14:30Z dglo $";
+	return "$Id: OldTriggerComponent.java 14506 2013-05-16 19:23:08Z dglo $";
     }
 }
