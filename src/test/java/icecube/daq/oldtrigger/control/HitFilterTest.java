@@ -61,6 +61,8 @@ public class HitFilterTest
                 configDir.substring(breakPt);
         }
 
+        DomSetFactory.setConfigurationDirectory(configDir);
+
         try {
             DomSetFactory.setDomRegistry(DOMRegistry.loadRegistry(configDir));
         } catch (Exception ex) {
