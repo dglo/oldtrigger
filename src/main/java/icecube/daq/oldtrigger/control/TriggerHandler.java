@@ -1,7 +1,7 @@
 /*
  * class: TriggerHandler
  *
- * Version $Id: TriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
+ * Version $Id: TriggerHandler.java 14647 2013-10-14 21:35:55Z dglo $
  *
  * Date: October 25 2004
  *
@@ -51,7 +51,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class provides the analysis framework for the inice trigger.
  *
- * @version $Id: TriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
+ * @version $Id: TriggerHandler.java 14647 2013-10-14 21:35:55Z dglo $
  * @author pat
  */
 public class TriggerHandler
@@ -425,7 +425,7 @@ public class TriggerHandler
                     Payload pay = (Payload) hit;
                     log.error("Bad hit buf " + pay.getPayloadBacking() +
                               " off " + pay.getPayloadOffset() + " len " +
-                              pay.getPayloadLength() + " type " +
+                              pay.length() + " type " +
                               pay.getPayloadType() + " utc " +
                               pay.getPayloadTimeUTC());
                     continue;
@@ -475,14 +475,14 @@ public class TriggerHandler
                 if (tPayload.getSourceID() != null) {
                     srcId = tPayload.getSourceID().getSourceID();
                 } else {
-                    if (tPayload.getPayloadLength() == 0 &&
+                    if (tPayload.length() == 0 &&
                         tPayload.getPayloadTimeUTC() == null &&
                         ((IPayload) tPayload).getPayloadBacking() == null)
                     {
                         log.error("Ignoring recycled payload");
                     } else {
                         log.error("Unexpected null SourceID in payload (len=" +
-                                  tPayload.getPayloadLength() + ", time=" +
+                                  tPayload.length() + ", time=" +
                                   (tPayload.getPayloadTimeUTC() == null ?
                                    "null" : "" + tPayload.getPayloadTimeUTC()) +
                                    ", buf=" +
@@ -654,7 +654,7 @@ public class TriggerHandler
                           trType);
             }
 
-            int bufLen = payload.getPayloadLength();
+            int bufLen = payload.length();
 
             // allocate ByteBuffer
             ByteBuffer trigBuf;

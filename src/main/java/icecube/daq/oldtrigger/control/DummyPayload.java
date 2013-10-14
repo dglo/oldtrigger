@@ -1,7 +1,7 @@
 /*
  * class: DummyPayload
  *
- * Version $Id: DummyPayload.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: DummyPayload.java 14647 2013-10-14 21:35:55Z dglo $
  *
  * Date: October 7 2005
  *
@@ -24,7 +24,7 @@ import java.util.zip.DataFormatException;
  * This class is a dummy payload that only has a UTC time associated with it.
  * Its main purpose is for truncating the Splicer.
  *
- * @version $Id: DummyPayload.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: DummyPayload.java 14647 2013-10-14 21:35:55Z dglo $
  * @author pat
  */
 public class DummyPayload
@@ -68,7 +68,7 @@ public class DummyPayload
      * returns the length in bytes of this payload
      */
     public int getPayloadLength() {
-        return 0;
+        return length();
     }
 
     /**
@@ -91,6 +91,11 @@ public class DummyPayload
     public long getUTCTime()
     {
         return payloadTimeUTC.longValue();
+    }
+
+    public int length()
+    {
+        return 0;
     }
 
     public void loadPayload()

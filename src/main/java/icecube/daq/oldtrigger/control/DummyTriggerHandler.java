@@ -342,7 +342,7 @@ public class DummyTriggerHandler
 
             // write trigger to a ByteBuffer
             ByteBuffer trigBuf =
-                ByteBuffer.allocate(trigger.getPayloadLength());
+                ByteBuffer.allocate(trigger.length());
             try {
                 ((IWriteablePayload) trigger).writePayload(false, 0, trigBuf);
             } catch (IOException ioe) {

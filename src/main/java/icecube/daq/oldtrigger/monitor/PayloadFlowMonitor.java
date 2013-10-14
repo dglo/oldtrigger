@@ -1,7 +1,7 @@
 /*
  * class: PayloadFlowMonitor
  *
- * Version $Id: PayloadFlowMonitor.java 14204 2013-02-11 19:52:57Z dglo $
+ * Version $Id: PayloadFlowMonitor.java 14647 2013-10-14 21:35:55Z dglo $
  *
  * Date: December 29 2005
  *
@@ -20,7 +20,7 @@ import icecube.icebucket.monitor.simple.ScalarFlowMonitorImpl;
  * This class monitors the flow of payloads. It keeps track of object counts and rates as
  * well as byte counts and rates.
  *
- * @version $Id: PayloadFlowMonitor.java 14204 2013-02-11 19:52:57Z dglo $
+ * @version $Id: PayloadFlowMonitor.java 14647 2013-10-14 21:35:55Z dglo $
  * @author pat
  */
 public class PayloadFlowMonitor
@@ -77,7 +77,7 @@ public class PayloadFlowMonitor
         lastTime = currentTime;
 
         countMonitor.measure(1);
-        byteMonitor.measure(payload.getPayloadLength());
+        byteMonitor.measure(payload.length());
 
     }
 

@@ -245,7 +245,7 @@ class Analysis
                  hits, rReq);
 
             ByteBuffer trigBuf =
-                ByteBuffer.allocate(trigReq.getPayloadLength());
+                ByteBuffer.allocate(trigReq.length());
             try {
                 ((IWriteablePayload) trigReq).writePayload(false, 0, trigBuf);
             } catch (IOException ioe) {

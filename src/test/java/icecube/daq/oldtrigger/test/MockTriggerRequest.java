@@ -150,7 +150,7 @@ public class MockTriggerRequest
 
     public int getPayloadLength()
     {
-        return LENGTH;
+        return length();
     }
 
     public int getPayloadType()
@@ -191,6 +191,11 @@ public class MockTriggerRequest
     public boolean isMerged()
     {
         throw new Error("Unimplemented");
+    }
+
+    public int length()
+    {
+        return LENGTH;
     }
 
     public void setGetPayloadsException(Exception ex)

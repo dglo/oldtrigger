@@ -177,7 +177,7 @@ public class AmandaSocketSimulator
             int offset = i*72;
             ITriggerRequestPayload trigger = generateTrigger();
             if (log.isInfoEnabled()) {
-                log.info("Trigger size = " + trigger.getPayloadLength());
+                log.info("Trigger size = " + trigger.length());
             }
             try {
                 trigger.writePayload(false, offset, buffer);

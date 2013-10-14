@@ -1,7 +1,7 @@
 /*
  * class: AbstractTrigger
  *
- * Version $Id: AbstractTrigger.java 14206 2013-02-11 22:15:22Z dglo $
+ * Version $Id: AbstractTrigger.java 14647 2013-10-14 21:35:55Z dglo $
  *
  * Date: August 19 2005
  *
@@ -50,7 +50,7 @@ import org.apache.commons.logging.LogFactory;
  * ITriggerConfig, ITriggerControl, and ITriggerMonitor interfaces. All specific trigger
  * classes derive from this class.
  *
- * @version $Id: AbstractTrigger.java 14206 2013-02-11 22:15:22Z dglo $
+ * @version $Id: AbstractTrigger.java 14647 2013-10-14 21:35:55Z dglo $
  * @author pat
  */
 public abstract class AbstractTrigger
@@ -366,7 +366,7 @@ public abstract class AbstractTrigger
             triggerHandler.addToTriggerBag(payload);
             sentTriggerCounter++;
             countMonitor.measure(1);
-            byteMonitor.measure(payload.getPayloadLength());
+            byteMonitor.measure(payload.length());
         } else {
             payload.recycle();
         }

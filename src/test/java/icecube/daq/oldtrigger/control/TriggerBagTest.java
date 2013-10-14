@@ -57,7 +57,7 @@ public class TriggerBagTest
 
         public int getPayloadLength()
         {
-            return LENGTH;
+            return length();
         }
 
         public int getPayloadType()
@@ -68,6 +68,11 @@ public class TriggerBagTest
         public long getUTCTime()
         {
             throw new Error("Unimplemented");
+        }
+
+        public int length()
+        {
+            return LENGTH;
         }
 
         public void setCache(IByteBufferCache cache)

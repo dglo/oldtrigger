@@ -108,12 +108,17 @@ public class ConditionalTriggerBagTest
 
         public int getPayloadLength()
         {
-            return LENGTH;
+            return length();
         }
 
         public int getPayloadType()
         {
             throw new Error("Unimplemented");
+        }
+
+        public int length()
+        {
+            return LENGTH;
         }
 
         public void setCache(IByteBufferCache cache)

@@ -49,7 +49,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * This class ...does what?
  *
- * @version $Id: GlobalTriggerHandler.java 14299 2013-03-06 02:14:30Z dglo $
+ * @version $Id: GlobalTriggerHandler.java 14647 2013-10-14 21:35:55Z dglo $
  * @author shseo
  */
 public class GlobalTriggerHandler
@@ -637,7 +637,7 @@ public class GlobalTriggerHandler
                     log.info("Issue # " + miTotalOutputGlobalTriggers + " GTEventPayload (trigType = " + GT_trigType + " ) : "
                              + " extended event time = " + firstTime + " to "
                              + lastTime + " and contains " + nSubPayloads + " subTriggers"
-                             + ", payload length = " + GTEventPayload.getPayloadLength() + " bytes");
+                             + ", payload length = " + GTEventPayload.length() + " bytes");
                     if(-1 == GT_trigType){
                         log.info("Merged GT # " + miTotalOutputMergedGlobalTriggers);
                     }
@@ -646,11 +646,11 @@ public class GlobalTriggerHandler
                     miMaxNumLogged = nSubPayloads;
                     log.info("new max subpayloads " + nSubPayloads +
                              ", payload length = " +
-                             GTEventPayload.getPayloadLength() + " bytes");
+                             GTEventPayload.length() + " bytes");
                 }
             }
 
-            int bufLen = GTEventPayload.getPayloadLength();
+            int bufLen = GTEventPayload.length();
 
             ByteBuffer trigBuf;
             if (outCache != null) {
